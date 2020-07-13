@@ -5,10 +5,10 @@ const container = document.getElementById('container')
 
 function displayOne(){
   axios.get('/question')
-      .then((random) => {
-        console.log(random)
+      .then((dbRes) => {
+        console.log(dbRes.data.question)
         console.log("in");
-        container.innerHTML += `<div>${random}</div>` 
+        container.innerHTML += `<div>${dbRes.data.question}</div>` 
     })
     .catch((err) => console.log(err));
 

@@ -14,7 +14,7 @@ router.get("/question", (req, res, next) => {
     .then((dbRes) => {
       var random = dbRes[Math.floor(dbRes.length * Math.random())];
       console.log(dbRes, random)
-      res.render("index", random);
+      res.json(random);
     })
     .catch(next);
 });
