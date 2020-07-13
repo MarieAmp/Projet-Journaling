@@ -1,5 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
+const btn = document.getElementById('btn-start')
+const container = document.getElementById('container')
 
-  console.log('IronGenerator JS imported successfully!');
+// bug
 
-}, false);
+function displayOne(){
+  axios.get('/question')
+      .then((random) => {
+        console.log(random)
+        console.log("in");
+        container.innerHTML += `<div>${random}</div>` 
+    })
+    .catch((err) => console.log(err));
+
+}
+
+btn.onclick = displayOne
+
+// 
