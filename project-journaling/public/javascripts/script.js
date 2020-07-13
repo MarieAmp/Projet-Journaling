@@ -1,7 +1,7 @@
 const btn = document.getElementById('btn-start')
 const container = document.getElementById('container')
 
-// bug
+
 
 function displayOne(){
   axios.get('/question')
@@ -15,5 +15,4 @@ function displayOne(){
 }
 
 btn.onclick = displayOne
-
-// 
+ 
