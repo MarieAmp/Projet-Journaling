@@ -22,20 +22,20 @@ router.post("/signup", (req, res, next) => {
   UserModel.findOne({ email: user.email })
     .then((dbRes) => {
       if (dbRes) {
-        var msg = {
+        var msg_signup = {
           status: "error",
           text:
             "this email adress is already registred. Sign-up or use a different email address",
         };
-        console.log(msg);
-        return res.render("signup", { msg });
+        console.log(msg_signup);
+        return res.render("sign", { msg_signup });
       }
 
       const salt = bcrypt.genSaltSync(10);
       const hashed = bcrypt.hashSync(user.password, salt);
       user.password = hashed;
 
-      UserModel.create(user).then(() => res.redirect("/auth/signin"));
+      UserModel.create(user).then(() => res.redirect("/auth/sign"));
     })
     .catch(next);
 });
@@ -48,8 +48,8 @@ router.post("/signin", (req, res, next) => {
   UserModel.findOne({ email: user.email })
     .then((dbRes) => {
       if (!dbRes) {
-        var msg = { status: "error", text: "wrong email" };
-        return res.render("signin", { msg });
+        var msg_signin = { status: "error", text: "wrong email" };
+        return res.render("signin", { msg_signin });
       }
       if (bcrypt.compareSync(user.password, dbRes.password)) {
         const { _doc: clone } = { ...dbRes };
@@ -58,9 +58,9 @@ router.post("/signin", (req, res, next) => {
         req.session.currentUser = clone;
         return res.redirect("/");
       } else {
-        var msg = { status: "error", text: "wrong password" };
+        var msg_signin = { status: "error", text: "wrong password" };
         //console.log(msg);
-        return res.render("signin", { msg });
+        return res.render("signin", { msg_signin });
       }
     })
     .catch(next);
@@ -70,7 +70,7 @@ router.post("/signin", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/auth/signin");
+    res.redirect("/");
   });
 });
 
