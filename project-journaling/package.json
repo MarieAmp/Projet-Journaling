@@ -8,13 +8,16 @@
     "dev-windows": "nodemon ./bin/www -e .js, .hbs"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0",
     "axios": "^0.19.2",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
+    "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.3",
+    "express-session": "^1.17.1",
     "hbs": "^4.0.1",
+    "moment": "^2.27.0",
     "mongoose": "^5.9.23",
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",
