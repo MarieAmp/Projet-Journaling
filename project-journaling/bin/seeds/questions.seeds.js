@@ -315,6 +315,14 @@ const questions = [
   {
     question : "Today you gained ______",
     theme : "lifestyle"
+  },
+  {
+    question : "Who have you recently deleted from your contacts ?",
+    theme : "relationships"
+  },
+  {
+    question : "Do you want to know how it ends ?",
+    theme : "deep"
   }
 ]
 
