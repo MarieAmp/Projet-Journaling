@@ -76,4 +76,12 @@ app.use('/auth', auth);
 const dashboard = require('./routes/dashboard');
 app.use('/dashboard', dashboard);
 
+// TO DISPLAY ALL QUESTIONS AND ALL ANSWERS
+const collections = require('./routes/collections');
+app.use('/dashboard/collections', collections)
+
+// ADMIN DASHBOARD (to manage questions and users with admin rights)
+const admin = require('./routes/admin');
+app.use('/admin', admin)
+
 module.exports = app;
