@@ -1,7 +1,7 @@
 require("dotenv").config();
-require("./../config/mongodb");
+require("../../config/mongodb");
 
-const QuestionModel = require("./../models/Question")
+const QuestionModel = require("../../models/Question")
 
 const questions = [
   {
