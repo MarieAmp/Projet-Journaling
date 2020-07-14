@@ -29,4 +29,4 @@ function getAnswer(input, questionId) {
     .then((Res) => {});
 }
 
-btn.onclick = displayOne;
+// btn.onclick = displayOne;
