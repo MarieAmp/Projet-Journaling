@@ -5,7 +5,7 @@ use moment to format dates -->
 {{#each this}}
 
 <div>
-  <li> <a href="/answer/{{this._id}}"> {{this.date}} {{this.mood}}  <i class="fa fa-question" aria-hidden="true"></i> </a></li>
+  <li> <a href="/answer/{{this._id}}"> {{format-date this.date}} - mood : {{this.mood}}  <i class="fa fa-question" aria-hidden="true"></i> </a></li>
 </div> 
 
 {{/each}}
