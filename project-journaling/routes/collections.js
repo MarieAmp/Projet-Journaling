@@ -25,8 +25,8 @@ router.get("/question-:id", protectPrivateRoute, async (req, res, next) => {
 
   try {
     var question = await QuestionModel.findById(req.params.id);
-    var answers = await AnswerModel.find();
-    res.render("lists", {questions, answers})
+    var answers = await AnswerModel.find({"id_question" : req.params.id });
+    res.json("lists", {question, answers})
   }
   catch (err) {
     res.send(err)
