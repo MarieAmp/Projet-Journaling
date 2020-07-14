@@ -65,5 +65,5 @@ function getMood(input) {
 }
 
 
-btn.onclick = displayOne;
+// btn.onclick = displayOne;
 
