@@ -1,10 +1,21 @@
-<nav>
-  <button> Deploy menu</button>
-  <ul class="container_item">
-    <li><a href="/">Home</a></li> 
-    <li><a href="/dashboard">Dashboard </a> </li>
-    <li><a href="/auth/signin"> Sign-in </a> </li>
-    <li><a href="/auth/signup"> Sign-up </a> </li>
-    <li><a href="/auth/logout"> Log-out </a> </li>
-  </ul>
+<header id="header-main">
+  <nav id="nav-main">
+    <a href="/">HOME</a>
+    <a href="/dashboard">ABOUT</a>
+    <a href="/auth/signin"> SIGN IN</a>
+    {{!--  <a href="/auth/logout"> Log-out </a> --}}
+  </nav>
+  <button class="btn" href="/auth/signup" id="btn-signup"> SIGN UP</button>
+</header>
+
+<nav id="nav-mobile">
+  <a href="/">HOME</a>
+  <a href="/dashboard">ABOUT</a>
+  <a href="/auth/signin">SIGN IN</a>
+  {{!-- <a href="/auth/signup"> Sign-up </a>
+    <a href="/auth/logout"> Log-out </a> --}}
 </nav>
+
+
+<button class="btn" href="/auth/signup" id="btn-signup-mobile"> SIGN UP</button>
+<span id="burger"><i class="fa fa-bars"></i></span>

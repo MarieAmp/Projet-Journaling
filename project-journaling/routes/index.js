@@ -23,20 +23,20 @@ router.get("/question", (req, res, next) => {
 router.post("/question", (req, res, next) => {
   answerModel.create(req.body)
     .then((dbRes) => {
-      console.log('answer created' + dbRes, random);
-      res.json(random);
+      res.json(dbRes)
+      console.log('answer created');
     })
     .catch(next);
 });
 
 router.get("/mood", (req, res, next) => {
-  console.log('coucou')
+  res.send('in mood')
 });
 
   router.post("/mood"), (req, res, next) => {
     answerModel.findByIdAndUpdate(req.params.id, req.body)
-      .then((res) => {
-        console.log("updated" + res);
+      .then((dbRes) => {
+        res.send("updated" + dbRes);
       })
       .catch(next);
   };
