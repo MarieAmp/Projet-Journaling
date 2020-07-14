@@ -3,11 +3,9 @@
 
 
 body {
-  padding: 50px;
+  padding: 0px;
+  margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #00B7FF; }
 
 
 #container {
@@ -20,13 +18,15 @@ a {
   
 }
 
-#btn-start {
-  width: 60px;
-  height: 30px;
+.btn {
+  width: 150px;
+  height: 40px;
   background-color: #6886c5;
   color:white;
+  font-style: 17px;
   font-weight: 500;
-  border-radius: 5px;
+  font-weight: 500;
+  border-radius: 20px;
   border-style: none;
 }
 
@@ -41,9 +41,107 @@ input {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-end;
+  align-items: flex-end;
  
+}
+
+@media (max-width: 650px) {
+  /* hide the nav when the screen size is <= 650px */
+  #nav-main {
+    display : none !important;
+  }
+  #header-main {
+    display : none !important;
+  }
+}
+
+@media (min-width: 650px) {
+  /* hide the nav when the screen size is >= 650px */
+  #burger {
+    display: none;
+  }
+  #btn-signup-mobile {
+    display: none
+  }
+}
+
+#nav-main{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+#header-main{
+  display:flex;
+  flex-direction: row;
+}
+
+/* #header-main.is-active{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+}  */
+
+#nav-main a {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  margin: 30px 50px 0px 0px;
+}
+
+#burger {
+ background-color: #6886c5;
+ color:white;
+ text-decoration: none;
+ cursor: pointer;
+ padding: 10px;
+}
+
+#nav-mobile {
+  position: absolute;
+  top: 0px;
+  right: -100%;
+  bottom: 0;
+  width: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: left 5s linear;
+  background-color: #A8A7C7;
+  ;
+  border-top: 1px solid whitesmoke;
+}
+
+#nav-mobile a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 30px 50px 30px 20px;
+}
+
+#nav-mobile.is-active {
+  right: 0;
+}
+
+#btn-signup {
+  margin: 30px 50px 0px 0px;
+}
+
+#btn-signup-mobile{
+  margin: 30px 50px 0px 0px;
+}
+
+#btn-signup a {
+  margin-bottom: 10px;
+  width:20px;
+  height: 20px;
 }
 
 
