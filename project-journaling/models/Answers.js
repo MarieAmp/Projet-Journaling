@@ -8,12 +8,13 @@ const responseSchema = new Schema({
   mood: {
     type: String,
     enum: ["Very Good", "Good", "Neutral", "Bad"]},
-    id_user:{
+  id_user:{
         type: Schema.Types.ObjectId,
     ref: "User"},
-    id_question: {
+  id_question: {
       type: Schema.Types.ObjectId,
       ref: "Question",
+  }
    
   });
 
