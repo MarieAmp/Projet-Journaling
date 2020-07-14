@@ -4,6 +4,7 @@ const btnMood = document.getElementById("btn-mood");
 
 
 
+
 function displayOne() {
   axios
     .get("/question")
@@ -43,6 +44,7 @@ function displayMood() {
     .catch((err) => console.log(err));
 }
 
+// Création variable locale pour sauvegarder en deux fois le mood puis la réponse
 function getAnswer(input, questionId) {
   axios
     .post("/response", {
@@ -65,4 +67,3 @@ function getMood(input) {
 
 btn.onclick = displayOne;
 
-/* btnMood.onclick = displayMood; */

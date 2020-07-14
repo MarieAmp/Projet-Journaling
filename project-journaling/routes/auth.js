@@ -42,7 +42,7 @@ router.post("/signup", (req, res, next) => {
 
 // action::Login
 
-router.post("/signin", (req, res, next) => {
+router.post("auth/signin", (req, res, next) => {
   const user = req.body;
 
   UserModel.findOne({ email: user.email })
@@ -70,7 +70,7 @@ router.post("/signin", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/auth/signin");
+    res.redirect("/");
   });
 });
 

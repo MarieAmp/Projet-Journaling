@@ -1,0 +1,35 @@
+
+
+  <section class="container_form">
+    <h2>Sign-up</h2>
+
+    {{#if msg}}
+
+    <p id="message_error"> {{msg.text}} </p>
+
+    {{/if}}
+
+    <form action="/auth/signup" method="post">
+
+      <div class="container_item"><label for="name" class="label">Name</label>
+        <input type="text" name="name" id="name" class="input_sign" value="Rebecca"></div>
+
+      <div class="container_item"><label for="lastName" class="label">Lastname</label>
+        <input type="text" name="lastName" id="lastName" class="input_sign" value="Black"></div>
+
+      <div class="container_item"><label for="email" class="label">Email</label>
+        <input type="email" name="email" id="email" class="input_sign" required value="rblack@nonsense.co"></div>
+
+      <div class="container_item"><label for="password" class="label">Password</label>
+        <input type="password" name="password" class="input_sign" id="password" required value="12345"></div>
+
+      <div class="container_item"><label for="bday" class="label">Birthday</label>
+        <input type="date" name="bday" class="input_sign" id="birthday" value="10/12/2013"></div>
+
+      <div class="container_item">
+        <input type="submit" value="Register" id="input_signin"></div>
+    </form>
+    <p> Already have an account?! <a id="a_signin"> Sign-in!</a></p>
+  </section>
+
+
