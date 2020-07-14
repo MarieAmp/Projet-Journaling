@@ -22,34 +22,34 @@ router.post("/signup", (req, res, next) => {
   UserModel.findOne({ email: user.email })
     .then((dbRes) => {
       if (dbRes) {
-        var msg_signup = {
+        var msg = {
           status: "error",
           text:
             "this email adress is already registred. Sign-up or use a different email address",
         };
-        console.log(msg_signup);
-        return res.render("sign", { msg_signup });
+        console.log(msg);
+        return res.render("signup", { msg });
       }
 
       const salt = bcrypt.genSaltSync(10);
       const hashed = bcrypt.hashSync(user.password, salt);
       user.password = hashed;
 
-      UserModel.create(user).then(() => res.redirect("/auth/sign"));
+      UserModel.create(user).then(() => res.redirect("/auth/signin"));
     })
     .catch(next);
 });
 
 // action::Login
 
-router.post("/signin", (req, res, next) => {
+router.post("auth/signin", (req, res, next) => {
   const user = req.body;
 
   UserModel.findOne({ email: user.email })
     .then((dbRes) => {
       if (!dbRes) {
-        var msg_signin = { status: "error", text: "wrong email" };
-        return res.render("signin", { msg_signin });
+        var msg = { status: "error", text: "wrong email" };
+        return res.render("signin", { msg });
       }
       if (bcrypt.compareSync(user.password, dbRes.password)) {
         const { _doc: clone } = { ...dbRes };
@@ -58,9 +58,9 @@ router.post("/signin", (req, res, next) => {
         req.session.currentUser = clone;
         return res.redirect("/");
       } else {
-        var msg_signin = { status: "error", text: "wrong password" };
+        var msg = { status: "error", text: "wrong password" };
         //console.log(msg);
-        return res.render("signin", { msg_signin });
+        return res.render("signin", { msg });
       }
     })
     .catch(next);

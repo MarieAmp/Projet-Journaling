@@ -1,0 +1,66 @@
+.container_global {
+  display: flex;
+  flex-flow: row wrap;
+
+}
+
+
+.container_form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80vw;
+  height: 80vh;
+}
+
+.container_item {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: baseline;
+  align-items: center;
+  width: 40vw;
+  height: 10vh;
+}
+
+.label {
+  color: rgb(142, 175, 238);
+}
+
+.input_sign {
+  width: 18vw;
+  height: 5vh;
+  border-radius: 25px;
+  border: 1px rgba(130, 167, 236, 0.651) solid;
+  padding-left: 15px;
+  margin: 1vh 1vw;
+  box-sizing: border-box;
+}
+
+#a_signin, #a_signup {
+  cursor: pointer;
+}
+
+#input_signin, #input_signup {
+  width: 15vw;
+  height: 7vh;
+  background: #00B7FF;
+  color: aliceblue;
+  border-radius: 25px;
+  font-size: larger;
+  margin: 2vh 2vw;
+  box-sizing: border-box;
+
+}
+
+#message_error {
+  color: rgb(240, 77, 77);
+  width: 15vw;
+  overflow-wrap: break-word;
+  border-radius: 25px;
+  padding-left: 15px;
+  margin: 1vh 1vw;
+  box-sizing: border-box;
+
+
+}

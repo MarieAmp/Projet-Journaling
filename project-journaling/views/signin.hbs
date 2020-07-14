@@ -1,0 +1,24 @@
+
+  <section class="container_form">
+    <h2>Sign-in</h2>
+
+    {{#if msg }}
+
+    <p id="message_error"> {{msg.text}} </p>
+
+    {{/if }}
+
+    <form action="auth/signin" method="post">
+      <div class="container_item">
+        <label for="email" class="label">Email</label>
+        <input type="email" name="email" id="email_login" class="input_sign" required value="rblack@nonsense.co"></div>
+      <div class="container_item">
+        <label for="password" class="label">Password</label>
+        <input type="password" name="password" id="password_login" class="input_sign" required value="12345"></div>
+      <div class="container_item">
+        <input type="submit" id="input_signup" value="Log in"></div>
+    </form>
+    <p> Not registered yet ?! <a id="a_signup"> Sign-up!</a></p>
+  </section>
+
+</div>
