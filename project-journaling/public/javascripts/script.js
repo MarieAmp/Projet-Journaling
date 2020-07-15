@@ -27,7 +27,8 @@ function displayOne() {
       container.innerHTML += `<div id="question-div" class="slide-bck-center">
         <h1 class="question">${dbRes.data.question}</h1>
         <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" placeholder = "Answer here" required></input>
-        <button id="submit-answer" class="btn">Submit</button>`
+        <button id="submit-answer" class="btn">Submit</button>
+        </div>`
       const submit = document.getElementById("submit-answer");
       const input = document.querySelector(".response-input");
       submit.onclick = () => sendAnswer(input,dbRes.data._id);
@@ -41,7 +42,6 @@ function displayMood(answerId) {
     .get("/mood")
     .then((dbRes) => {
       console.log(dbRes);
-      questionDiv.innerHTML = ""
       container.innerHTML = `<div id="question-div">
       <p>Today's Mood</p>
       <h1 class="question" answer-id="${answerId}" >What's your mood today ?</h1>
