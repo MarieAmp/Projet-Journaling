@@ -6,9 +6,9 @@ body {
   padding: 0px;
   margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
-  background-image: url("/images/fond.png");
-  background-size: auto;
-  background-position: center;
+  background-image: url("/images/fond2.png");
+  background-position: auto;
+  background-size: initial;
 }
 
 
@@ -89,7 +89,7 @@ input {
   margin: 0 0px;
   letter-spacing: .15em; 
   animation: 
-    typing2 4s steps(40, end);
+    typing 4s steps(40, end);
   
 }
 
