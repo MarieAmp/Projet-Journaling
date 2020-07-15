@@ -1,4 +1,5 @@
 @import './sign.css';
+@import'./dashboard.css';
 
 
 body {
@@ -61,8 +62,8 @@ input {
   width: 350px;
   font-size: 50px;
   overflow: hidden; 
-  /* animation: 
-  appears 8s; */
+  animation: 
+  appears 8s; 
 
 }
 
@@ -117,18 +118,6 @@ input {
  
 }
 
-@keyframes slide-bck-center {
-  0% {
-    transform: translateZ(0);
-  }
-  100% {
-    transform: translateZ(-400px);
-  }
-}
-
-.slide-bck-center {
-	animation: slide-bck-center 0.45s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-}
 .response-input {
   background-color: white;
   border-style: none;

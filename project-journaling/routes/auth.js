@@ -42,7 +42,7 @@ router.post("/signup", (req, res, next) => {
 
 // action::Login
 
-router.post("auth/signin", (req, res, next) => {
+router.post("/signin", (req, res, next) => {
   const user = req.body;
 
   UserModel.findOne({ email: user.email })

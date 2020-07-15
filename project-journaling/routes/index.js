@@ -10,6 +10,8 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+
+
 router.get("/question", (req, res, next) => {
   QuestionModel.find()
     .then((dbRes) => {
@@ -20,26 +22,30 @@ router.get("/question", (req, res, next) => {
     .catch(next);
 });
 
-router.post("/question", (req, res, next) => {
+router.post("/answer", (req, res, next) => {
   answerModel.create(req.body)
     .then((dbRes) => {
       res.json(dbRes)
-      console.log('answer created');
+      console.log('answer created, ID is ',dbRes._id);
     })
     .catch(next);
 });
 
 router.get("/mood", (req, res, next) => {
-  res.send('in mood')
+  res.send('in mood - unnecessary axios request')
 });
 
-  router.post("/mood"), (req, res, next) => {
+  router.post("/editanswer/:id", (req, res, next) => {
+    console.log('in answer update id is - ', req.params.id);
+    console.log('update to do is - ', req.body)
     answerModel.findByIdAndUpdate(req.params.id, req.body)
       .then((dbRes) => {
-        res.send("updated" + dbRes);
+        console.log('answer updated')
+        console.log(dbRes)
+        res.json(dbRes);
       })
-      .catch(next);
-  };
+      .catch((err) => next(err));
+  });
 
 
 module.exports = router;

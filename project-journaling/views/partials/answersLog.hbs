@@ -1,0 +1,12 @@
+<!-- Give an array of answers in parameter to the partial 
+use moment to format dates -->
+
+<ul>
+{{#each this}}
+
+<div>
+  <li> <a href="/answer/{{this._id}}"> {{format-date this.date}} - mood : {{this.mood}}  <i class="fa fa-question" aria-hidden="true"></i> </a></li>
+</div> 
+
+{{/each}}
+</ul>

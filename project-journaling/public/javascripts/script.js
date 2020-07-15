@@ -26,8 +26,14 @@ btn.onclick = function displayOne() {
       container.innerHTML += `<div id="question-div" class="slide-bck-center">
         <h1 class="question">${dbRes.data.question}</h1>
         <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" placeholder = "Answer here" required></input>
-        <button id="submit-answer" class="btn">Submit</button>
-      </div> `;
+        <button id="submit-answer" class="btn">Submit</button>`
+  /*     console.log("in");
+      container.innerHTML += `<div id="question-div">
+      <p>Today's question</p>
+        <p class="question">${dbRes.data.question}</p>
+        <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" required></input>
+        <button id="submit-answer">Submit</button>
+      </div> `; */
       const submit = document.getElementById("submit-answer");
       const input = document.querySelector(".response-input");
       submit.onclick = () => sendAnswer(input,dbRes.data._id);
@@ -36,23 +42,25 @@ btn.onclick = function displayOne() {
     .catch((err) => console.log(err));
 }
 
-function displayMood() {
+function displayMood(answerId) {
   axios
     .get("/mood")
     .then((dbRes) => {
       console.log(dbRes);
       container.innerHTML = `<div id="question-div">
-      <h1 class="question">What's your mood today ?</p>
+      <p>Today's Mood</p>
+      <h1 class="question" answer-id="${answerId}" >What's your mood today ?</h1>
     <select name="moods" id="mood-select">
-    <option value="dog">Good</option>
-    <option value="cat">Bof</option>
-    <option value="hamster">Bad</option>
+    <option value="Very Good">Very Good</option>
+    <option value="Good">Good</option>
+    <option value="Neutral">Neutral</option>
+    <option value="Bad">Bad</option>
     </select>
     <button id="submit-mood">Submit</button>
     </div> `;
     const submitMood = document.getElementById("submit-mood");
     const inputMood = document.querySelector("#mood-select");
-    submitMood.onclick = () => getMood(inputMood.value);
+    submitMood.onclick = () => getMood(inputMood.value, answerId);
     })
     .catch((err) => console.log(err));
 }
@@ -61,25 +69,28 @@ function displayMood() {
 function sendAnswer(input,questionId) {
 
   axios
-    .post("/question", {
+    .post("/answer", {
       response: [input.value],
       id_question: questionId,
     })
-    .then((Res) => {
-        console.log('ok')
-      displayMood();
+    .then((dbRes) => {
+        console.log('ok' + dbRes.data)
+      displayMood(dbRes.data._id);
     })
     .catch((err) => console.log(err));
 }
 
-function getMood(input) {
+function getMood(inputValue, answerId) {
+  console.log(`answerID is ${answerId}, mood is ${inputValue}`);
   axios
-    .post("/mood", {
-      mood: input.value,
+    .post(`/editanswer/${answerId}`, {
+      mood : `${inputValue}`
     })
-    .then(Res)
+    .then((Res)=> console.log(Res))
     .catch((err) => console.log(err));
+    container.innerHTML = `Today's entry is saved ! <br> Check your <a href="/dashboard"> dashboard </a> for details and resources!`
 }
 
 
+btn.onclick = displayOne;
 

@@ -8,7 +8,7 @@
 
     {{/if }}
 
-    <form action="auth/signin" method="post">
+    <form action="/auth/signin" method="post">
       <div class="container_item">
         <label for="email" class="label">Email</label>
         <input type="email" name="email" id="email_login" class="input_sign" required value="rblack@nonsense.co"></div>
@@ -18,7 +18,7 @@
       <div class="container_item">
         <input type="submit" id="input_signup" value="Log in"></div>
     </form>
-    <p> Not registered yet ?! <a id="a_signup"> Sign-up!</a></p>
+    <p> Not registered yet ?! <a href="/auth/signup" id="a_signup"> Sign-up!</a></p>
   </section>
 
 </div>
