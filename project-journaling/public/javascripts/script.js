@@ -70,6 +70,7 @@ function sendAnswer(input,questionId) {
 
   axios
     .post("/answer", {
+      date:new Date(),
       response: [input.value],
       id_question: questionId,
     })
