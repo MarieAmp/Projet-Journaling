@@ -6,7 +6,6 @@ const navMobile = document.getElementById("nav-mobile");
 
 function toggleNavMobile() {
   navMobile.classList.toggle("is-active");
-  headerMobile.classListe.toggle("is-active");
 }
 
 burger.onclick = toggleNavMobile;
@@ -16,19 +15,25 @@ burger.onclick = toggleNavMobile;
 const btn = document.getElementById("btn-start");
 const container = document.getElementById("container");
 const btnMood = document.getElementById("btn-mood");
+const welcomeDiv = document.getElementById("welcome-div")
 
 btn.onclick = function displayOne() {
   axios
     .get("/question")
     .then((dbRes) => {
       console.log(dbRes.data.question);
-      console.log("in");
+      welcomeDiv.innerHTML = ""
+      container.innerHTML += `<div id="question-div" class="slide-bck-center">
+        <h1 class="question">${dbRes.data.question}</h1>
+        <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" placeholder = "Answer here" required></input>
+        <button id="submit-answer" class="btn">Submit</button>`
+  /*     console.log("in");
       container.innerHTML += `<div id="question-div">
       <p>Today's question</p>
         <p class="question">${dbRes.data.question}</p>
         <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" required></input>
         <button id="submit-answer">Submit</button>
-      </div> `;
+      </div> `; */
       const submit = document.getElementById("submit-answer");
       const input = document.querySelector(".response-input");
       submit.onclick = () => sendAnswer(input,dbRes.data._id);
@@ -44,7 +49,7 @@ function displayMood(answerId) {
       console.log(dbRes);
       container.innerHTML = `<div id="question-div">
       <p>Today's Mood</p>
-      <p class="question" answer-id="${answerId}" >What's your mood today ?</p>
+      <h1 class="question" answer-id="${answerId}" >What's your mood today ?</h1>
     <select name="moods" id="mood-select">
     <option value="Very Good">Very Good</option>
     <option value="Good">Good</option>
