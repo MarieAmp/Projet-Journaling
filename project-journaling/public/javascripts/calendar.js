@@ -53,7 +53,7 @@
   
     Calendar.prototype.drawMonth = function() {
       var self = this;
-      
+    //   RANDOMISE LA DATE DES EVENT POUR DEMO
       this.events.forEach(function(ev) {
        ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
       });
@@ -238,7 +238,7 @@
   
       events.forEach(function(ev) {
         var div = createElement('div', 'event');
-        var square = createElement('div', 'event-category ','.white');
+        var square = createElement('div', 'event-category '+'white');
         var span = createElement('span', '', ev.eventName);
   
         div.appendChild(square);
