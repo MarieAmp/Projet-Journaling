@@ -4,3 +4,4 @@ const UserModel = require("./../models/User")
 require("./../config/mongodb")
 const mongoose = require("mongoose")
 
+module.exports = router
