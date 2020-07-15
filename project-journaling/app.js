@@ -42,7 +42,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // CUSTOM MIDDLEWARES
-
+console.log("hello")
 if (dev_mode === true) {
   app.use(require("./middlewares/devMode")); // triggers dev mode during dev phase
   app.use(require("./middlewares/debugSessionInfos")); // displays session debug
