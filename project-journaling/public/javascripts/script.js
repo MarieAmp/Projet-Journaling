@@ -68,7 +68,7 @@ function sendAnswer(input,questionId) {
       date:new Date(),
       response: [input.value],
       id_question: questionId,
-    })
+     })
     .then((dbRes) => {
         console.log('ok' + dbRes.data)
       displayMood(dbRes.data._id);
