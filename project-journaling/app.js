@@ -76,6 +76,7 @@ app.use('/auth', auth);
 const dashboard = require('./routes/dashboard');
 app.use('/dashboard', dashboard);
 
+
 // TO DISPLAY ALL QUESTIONS AND ALL ANSWERS
 const collections = require('./routes/collections');
 app.use('/dashboard/collections', collections)
@@ -83,5 +84,11 @@ app.use('/dashboard/collections', collections)
 // ADMIN DASHBOARD (to manage questions and users with admin rights)
 const admin = require('./routes/admin');
 app.use('/admin', admin)
+
+// TO EDIT USERS'S PROFILES
+const profile = require('./routes/profile')
+app.use('/profile', profile);
+
+
 
 module.exports = app;

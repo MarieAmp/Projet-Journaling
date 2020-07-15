@@ -1,9 +1,7 @@
 @import './sign.css';
 @import'./dashboard.css';
-/*  @import'./calendar.css';
-*/
+/* @import'./calendar.css'; */
 @import'./admin.css';
-
 
 body {
   padding: 0px;
@@ -103,7 +101,7 @@ input {
   
 }
 
-.yellow {
+.yello {
   font-size: 50px;
   color: #D1CD62
 
