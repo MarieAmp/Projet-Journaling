@@ -139,8 +139,9 @@
       //Day Number
       var number = createElement('div', 'day-number', day.format('DD'));
   
-  
+  //////////////////////////////////////////////////////////////
       //Events
+
       var events = createElement('div', 'day-events');
       this.drawEvents(day, events);
   
@@ -160,7 +161,7 @@
         }, []);
   
         todaysEvents.forEach(function(ev) {
-          var evSpan = createElement('span', ev.color);
+          var evSpan = createElement('span', 'white');//ai changé ev.color en white pour créer une case blanche si evt
           element.appendChild(evSpan);
         });
       }
@@ -237,7 +238,7 @@
   
       events.forEach(function(ev) {
         var div = createElement('div', 'event');
-        var square = createElement('div', 'event-category ');
+        var square = createElement('div', 'event-category ','.white');
         var span = createElement('span', '', ev.eventName);
   
         div.appendChild(square);
@@ -322,8 +323,8 @@
 
   !function() {
     var data = [
-      { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange' },
-      { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange' },
+      { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', },
+      { eventName: 'Interview - Jr. Web Developer', calendar: 'Work',  },
       { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
       { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
   

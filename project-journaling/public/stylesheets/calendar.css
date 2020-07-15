@@ -168,6 +168,7 @@
     .orange { background: rgba(247, 167, 0, 1); }
     .green { background: rgba(153, 198, 109, 1); }
     .yellow { background: rgba(249, 233, 0, 1); }
+    .white { background: white }
     
     .details {
       position: relative;
