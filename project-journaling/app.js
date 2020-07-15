@@ -89,6 +89,9 @@ app.use('/admin', admin)
 const profile = require('./routes/profile')
 app.use('/profile', profile);
 
+//TO CALENDAR
+const calend = require('./routes/Cal')
+app.use('/calendar', calend);
 
 
 module.exports = app;
