@@ -6,7 +6,7 @@ const userSchema = new Schema({
   lastName: String,
   birthday: Date,
   email: String,
-  password : String,
+  password: String,
   plan: {
     type: String,
     enum: ["free", "premium"],

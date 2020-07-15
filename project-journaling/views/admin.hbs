@@ -1,0 +1,55 @@
+<nav>
+  <ul>
+    <li id="manage-admin">Admin access</li>
+    <li id="manage-questions">Questions</li>
+  </ul>
+</nav>
+
+
+<div id="container_admin">
+  <div class="manage-admin">
+    <label for="user_id"> by id</label>
+    <input type="text" name="user_id" id="user_id">
+    <button type="submit" id="btn_fetchUserById">Fetch</button>
+  </div>
+
+  <div class="manage-admin">
+    <label for="user_mail"> by email</label>
+    <input type="text" name="user_email" id="user_email">
+    <button type="submit" id="btn_fetchUserByEmail">Fetch</button>
+  </div>
+</div>
+
+<hr>
+
+<div id="container_question">
+  <div class="manage-question">
+    <label for="question_id"> by id</label>
+    <input type="text" name="question_id" id="question_id">
+    <button type="submit" id="btn_fetchQuestionById">Fetch</button>
+  </div>
+
+  <div class="question-admin">
+    <label for="question_keyword"> by keyword</label>
+    <input type="text" name="question_keyword" id="question_keyword">
+    <button type="submit" id="btn_fetchQuestionByKeyword">Fetch</button>
+  </div>
+
+  <div class="question-admin">
+    <label for="questions_all"> All questions </label>
+    <button type="submit" id="btn_fetchAllQuestions">Fetch</button>
+  </div>
+
+  <div class="manage-questions" id="display_questions">
+
+  </div>
+</div>
+
+<hr>
+<hr>
+
+<button id="display_clear">Clear</button>
+<div id="display_results">
+
+</div>
+
