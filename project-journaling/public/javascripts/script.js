@@ -16,8 +16,9 @@ const btn = document.getElementById("btn-start");
 const container = document.getElementById("container");
 const btnMood = document.getElementById("btn-mood");
 const welcomeDiv = document.getElementById("welcome-div")
+const questionDiv = document.getElementById("question-div")
 
-btn.onclick = function displayOne() {
+function displayOne() {
   axios
     .get("/question")
     .then((dbRes) => {
@@ -27,13 +28,6 @@ btn.onclick = function displayOne() {
         <h1 class="question">${dbRes.data.question}</h1>
         <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" placeholder = "Answer here" required></input>
         <button id="submit-answer" class="btn">Submit</button>`
-  /*     console.log("in");
-      container.innerHTML += `<div id="question-div">
-      <p>Today's question</p>
-        <p class="question">${dbRes.data.question}</p>
-        <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" required></input>
-        <button id="submit-answer">Submit</button>
-      </div> `; */
       const submit = document.getElementById("submit-answer");
       const input = document.querySelector(".response-input");
       submit.onclick = () => sendAnswer(input,dbRes.data._id);
@@ -47,6 +41,7 @@ function displayMood(answerId) {
     .get("/mood")
     .then((dbRes) => {
       console.log(dbRes);
+      questionDiv.innerHTML = ""
       container.innerHTML = `<div id="question-div">
       <p>Today's Mood</p>
       <h1 class="question" answer-id="${answerId}" >What's your mood today ?</h1>
@@ -89,7 +84,8 @@ function getMood(inputValue, answerId) {
     })
     .then((Res)=> console.log(Res))
     .catch((err) => console.log(err));
-    container.innerHTML = `Today's entry is saved ! <br> Check your <a href="/dashboard"> dashboard </a> for details and resources!`
+    container.innerHTML = `<div class="question-div">
+    <h1 class="question">Today's entry is saved !<h1> <br> Check your <a href="/dashboard"> dashboard </a> for details and resources!`
 }
 
 
