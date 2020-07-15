@@ -7,16 +7,16 @@ body {
   padding: 0px;
   margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
-  background-image: url("/images/fond.png");
-  background-size: auto;
-  background-position: center;
+  background-image: url("/images/fond2.png");
+  background-position: auto;
+  background-size: initial;
 }
 
 
 #container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
   height: 400px;
@@ -24,6 +24,13 @@ body {
   
 }
 
+.typing {
+  font-size: 30px
+}
+
+.see-dashboard {
+  margin-left: 200px;
+}
 
 .btn {
   width: 150px;
@@ -60,7 +67,7 @@ input {
 .question  {
   display: flex;
   flex-wrap: wrap;
-  width: 350px;
+  width: 800px;
   font-size: 50px;
   overflow: hidden; 
   animation: 
@@ -90,7 +97,7 @@ input {
   margin: 0 0px;
   letter-spacing: .15em; 
   animation: 
-    typing2 4s steps(40, end);
+    typing 4s steps(40, end);
   
 }
 
@@ -106,7 +113,7 @@ input {
 }
 
 #question-div {
-  width: 200px;
+  width: 300px;
   height: 500px;
   border-radius: 10px;
   display: flex;
@@ -125,6 +132,7 @@ input {
   font-size: 20px;
   border-radius: 20px;
   width: 350px;
+  margin-bottom: 10px;
 }
 
 #submit-answer {
@@ -151,7 +159,9 @@ input {
   }
 }
 
-
+#mood-select {
+  margin-bottom : 20px;
+}
 
 #nav-main{
   width: 100%;

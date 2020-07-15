@@ -1,8 +1,8 @@
-#get-quote{
-    width:15vh;
-    height: 10vh;
-}
 
+#get-quote {
+    margin:0;
+    padding:0;
+}
 
 #details_box {
     z-index: 10;
@@ -26,3 +26,202 @@
 .hidden {
     display: none !important;
 }
+
+#quote-container {
+    display: flex; 
+    width: 60%;
+    height: 300px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.884);
+    padding: 10px;
+    border-radius: 20px; 
+    margin: 20px;
+}
+
+#div-quote {
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 30px
+}
+
+.quote-text {
+    font-size: 18px;
+    color: black;
+    width: 60%;
+    padding-left: 50px;
+    animation:
+    appears 4s;
+}
+
+.dash-title {
+    padding-left: 30px;
+    margin: 0px;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.author-text {
+    font-size: 16px;
+    color: grey;
+    padding-left: 50px;
+    margin: 0px;
+    animation:
+    appears 4s
+}
+
+#dashboard-div {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin-left: 70px;
+
+}
+
+#dashboard-div2 {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin : 20px;
+    border-radius: 20px;
+
+
+}
+
+.second-div {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width:90%;
+    background-color: rgba(0, 0, 0, 0.178);
+}
+
+@keyframes slide-in-left {
+    0% {
+      transform: translateX(-1000px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+
+@media (max-width: 1060px) {
+    /* hide the nav when the screen size is <= 650px */
+    .second-div {
+      display : flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #quote-container {
+        width: 90%;
+        margin: 5px;
+    }
+  }
+
+.first-div{
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation:
+    slide-in-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.title-dash {
+    font-size: 50px;
+    padding: 0px 0px 30px 30px;
+    margin: 0;
+    overflow: scroll;
+    white-space: nowrap; 
+    margin: 20px 0px; 
+    letter-spacing: .10em; 
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  .text-dash {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    padding: 0px 0px 30px 30px;
+    margin: 0 0px;
+    letter-spacing: .15em; 
+  }
+
+  #btn-calendar {
+    margin: 30px 30px 0px 30px;
+  }
+
+  #yoga-container {
+    display: flex; 
+    width: 50%;
+    height: 300px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.884);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+
+  }
+
+  iframe {
+    padding: 30px 0px 30px 30px;
+    width: 400px;
+    height: 200px;
+    
+  }
+
+  #widget-container {
+    display: flex; 
+    width: 50%;
+    height: 300px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color:rgba(255, 255, 255, 0.884);
+    padding: 20px;
+    margin-top: 0px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    margin-right: 10px;
+    margin-left: 30px;
+  }
+
+  .spotify-text {
+    padding-left: 30px;
+  }
+
+  .third-div {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width:90%;
+  }
+
+  .spotify-widget {
+      width: 400px;
+  }

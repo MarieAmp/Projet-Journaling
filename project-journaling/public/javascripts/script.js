@@ -24,7 +24,7 @@ function displayOne() {
     .then((dbRes) => {
       console.log(dbRes.data.question);
       welcomeDiv.innerHTML = ""
-      container.innerHTML += `<div id="question-div" class="slide-bck-center">
+      container.innerHTML = `<div id="question-div" class="slide-bck-center">
         <h1 class="question">${dbRes.data.question}</h1>
         <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" placeholder = "Answer here" required></input>
         <button id="submit-answer" class="btn">Submit</button>
@@ -43,7 +43,6 @@ function displayMood(answerId) {
     .then((dbRes) => {
       console.log(dbRes);
       container.innerHTML = `<div id="question-div">
-      <p>Today's Mood</p>
       <h1 class="question" answer-id="${answerId}" >What's your mood today ?</h1>
     <select name="moods" id="mood-select">
     <option value="Very Good">Very Good</option>
@@ -51,7 +50,7 @@ function displayMood(answerId) {
     <option value="Neutral">Neutral</option>
     <option value="Bad">Bad</option>
     </select>
-    <button id="submit-mood">Submit</button>
+    <button id="submit-mood" class="btn">Submit</button>
     </div> `;
     const submitMood = document.getElementById("submit-mood");
     const inputMood = document.querySelector("#mood-select");
@@ -85,7 +84,10 @@ function getMood(inputValue, answerId) {
     .then((Res)=> console.log(Res))
     .catch((err) => console.log(err));
     container.innerHTML = `<div class="question-div">
-    <h1 class="question">Today's entry is saved !<h1> <br> Check your <a href="/dashboard"> dashboard </a> for details and resources!`
+    <h1 class="title">Today's entry is saved !</h1>
+    <div class="see-dashboard"><p class="typing">Check your dashboard for details <br>and resources!</p>
+    <a href="/dashboard"><button class="btn">See dashboard</button></a></div>
+    </div>`
 }
 
 
