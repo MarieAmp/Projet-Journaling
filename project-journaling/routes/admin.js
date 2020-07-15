@@ -72,7 +72,7 @@ router.get(
 
 // create, update and delete questions
 
-router.get("/questions/all", protectPrivateRoute, async (req, res, next) => {
+router.get("/questions/all", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
   try {
     var questions = await QuestionModel.find();
     res.json(questions);
@@ -81,9 +81,19 @@ router.get("/questions/all", protectPrivateRoute, async (req, res, next) => {
   }
 });
 
-router.get(
-  "/delete/question-:id",
-  protectPrivateRoute,
+
+router.get("/question/:id", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+  try {
+    var question = await QuestionModel.findById(req.params.id);
+    res.json(question);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+
+router.get( "/delete/question-:id",
+  protectPrivateRoute, protectAdminRoute,
   async (req, res, next) => {
     try {
       await QuestionModel.findByIdAndDelete(req.params.id);
@@ -93,5 +103,8 @@ router.get(
     }
   }
 );
+
+
+/* db.stores.find( { $text: { $search: "\"coffee shop\"" } } )*/
 
 module.exports = router;

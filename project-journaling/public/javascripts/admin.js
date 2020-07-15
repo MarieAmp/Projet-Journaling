@@ -66,10 +66,11 @@ var displayUserbyEmail = () => {
     .catch((err) => console.error(err));
 };
 
+/*
 var revokeAdmin = (userId) => {
   console.log("revoke btn pushed");
   axios
-    .get(`admin/revoke/${userId}`)
+    .get(`/admin/revoke/${userId}`)
     .then((dbRes) => console.log("admin rights revoked"))
     .catch((err) => console.error(err));
   displayResults.innerHTML = "Admin access revoked";
@@ -78,24 +79,25 @@ var revokeAdmin = (userId) => {
 var grantAdmin = (userId) => {
   console.log('grant btn pushed');
   axios
-    .get(`admin/grant/${userId}`)
+    .get(`/admin/grant/${userId}`)
     .then((dbRes) => console.log("admin rights granted"))
     .catch((err) => console.error(err));
   displayResults.innerHTML = "Admin access granted";
 };
+*/
 
 var manageAccess = (adminStatus, userId) => {
   if (adminStatus) {
-    displayResults.innerHTML += `<a class="revoke" id="revoke"> Revoke admin access
+    displayResults.innerHTML += `<a href="/admin/revoke/${userId}" class="revoke" id="revoke"> Revoke admin access
 </a>`;
   } else {
-    displayResults.innerHTML += `<a class="grant" id="grant"> Grant admin access
+    displayResults.innerHTML += `<a href="/admin/grant/${userId}" class="grant" id="grant"> Grant admin access
 </a>`;
   }
-  var btnRevoke = document.getElementById("revoke");
-  var btnGrant = document.getElementById("grant");
-  btnRevoke.onclick = revokeAdmin(userId);
-  btnGrant.onclick = grantAdmin(userId);
+  //var linkRevoke = document.getElementById("revoke");
+  //var linkGrant = document.getElementById("grant");
+  //btnRevoke.onclick = revokeAdmin(userId);
+  //btnGrant.onclick = grantAdmin(userId);
 };
 
 var displayAllQuestions = () => {
@@ -118,17 +120,33 @@ var displayAllQuestions = () => {
     .catch((err) => console.error(err));
 };
 
+
+var displayOneQuestion = () => {
+  var questionId = document.getElementById('question_id').value
+  console.log('display one question requested for id', questionId)
+  clear();
+  axios
+    .get(`admin/question/${questionId}`)
+    .then((jsonQuestion) => {
+      console.log(jsonQuestion.data);
+      var question = jsonQuestion.data;
+
+      displayResults.innerHTML = ` <h3> Question #${question._id} </h3>
+      <p class="question"> ${question.question} </p>
+      <p class="theme">  theme : ${question.theme} </p>
+      <button id="display_all">All questions</button>`;
+      
+      var btnDisplayAll = document.getElementById('display_all');
+      btnDisplayAll.onclick = displayAllQuestions
+    })
+    .catch((err) => console.error(err));
+};
+
+
+
 btnClear.onclick = clear;
 btnUserbyId.onclick = displayUserbyId;
 btnUserbyEmail.onclick = displayUserbyEmail;
 btnAllQuestions.onclick = displayAllQuestions;
 
 
-
-/*
-      if (adminStatus) {
-        displayResults.innerHTML += `<span class="revoke" id="revoke"> Revoke admin access
-</span>`      } 
-else {displayResults.innerHTML += `<span class="grant" id="grant"> Grant admin access
-</span>`}
-*/
