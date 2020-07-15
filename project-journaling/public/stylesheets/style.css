@@ -1,6 +1,6 @@
 @import './sign.css';
 @import'./dashboard.css';
-@import'./calendar.css';
+/* @import'./calendar.css'; */
 
 
 body {
@@ -101,7 +101,7 @@ input {
   
 }
 
-.yellow {
+.yello {
   font-size: 50px;
   color: #D1CD62
 
