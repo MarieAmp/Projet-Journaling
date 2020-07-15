@@ -6,7 +6,6 @@ const navMobile = document.getElementById("nav-mobile");
 
 function toggleNavMobile() {
   navMobile.classList.toggle("is-active");
-  headerMobile.classListe.toggle("is-active");
 }
 
 burger.onclick = toggleNavMobile;
@@ -16,18 +15,18 @@ burger.onclick = toggleNavMobile;
 const btn = document.getElementById("btn-start");
 const container = document.getElementById("container");
 const btnMood = document.getElementById("btn-mood");
+const welcomeDiv = document.getElementById("welcome-div")
 
 btn.onclick = function displayOne() {
   axios
     .get("/question")
     .then((dbRes) => {
       console.log(dbRes.data.question);
-      console.log("in");
-      container.innerHTML += `<div id="question-div">
-      <p>question</p>
-        <p class="question">${dbRes.data.question}</p>
-        <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" required></input>
-        <button id="submit-answer">Submit</button>
+      welcomeDiv.innerHTML = ""
+      container.innerHTML += `<div id="question-div" class="slide-bck-center">
+        <h1 class="question">${dbRes.data.question}</h1>
+        <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" placeholder = "Answer here" required></input>
+        <button id="submit-answer" class="btn">Submit</button>
       </div> `;
       const submit = document.getElementById("submit-answer");
       const input = document.querySelector(".response-input");
@@ -43,8 +42,7 @@ function displayMood() {
     .then((dbRes) => {
       console.log(dbRes);
       container.innerHTML = `<div id="question-div">
-      <p>Mood</p>
-      <p class="question">What's your mood today ?</p>
+      <h1 class="question">What's your mood today ?</p>
     <select name="moods" id="mood-select">
     <option value="dog">Good</option>
     <option value="cat">Bof</option>

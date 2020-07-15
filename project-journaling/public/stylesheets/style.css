@@ -4,18 +4,24 @@
 body {
   padding: 0px;
   margin: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+  background-image: url("/images/fond.png");
+  background-size: auto;
+  background-position: center;
+}
 
 
 #container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   flex-direction: column;
   height: 400px;
-  width: 80%;
+  width: 60%;
   
 }
+
 
 .btn {
   width: 150px;
@@ -34,15 +40,105 @@ input {
   width: 200px;
 }
 
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes appears {
+  from {
+    color: rgba(0, 0, 0, 0);}
+} to { 
+  color: black; }
+
+  @keyframes transition {
+
+  }
+
+.question  {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+  font-size: 50px;
+  overflow: hidden; 
+  /* animation: 
+  appears 8s; */
+
+}
+
+.title {
+  font-size: 50px;
+  padding: 0px 0px 30px 200px;
+  margin: 0;
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 20px 0px; 
+  letter-spacing: .10em; 
+  animation: 
+    typing 4s steps(40, end);
+}
+
+.hello {
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+  padding: 0px 0px 30px 200px;
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 0px;
+  letter-spacing: .15em; 
+  animation: 
+    typing2 4s steps(40, end);
+  
+}
+
+.yellow {
+  font-size: 50px;
+  color: #D1CD62
+
+}
+
+.btn-start {
+  margin: 0px 0px 30px 200px;
+  font-size: 20px;
+}
+
 #question-div {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 500px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 50px;
+  border-style : 2px solid black;
  
+}
+
+@keyframes slide-bck-center {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translateZ(-400px);
+  }
+}
+
+.slide-bck-center {
+	animation: slide-bck-center 0.45s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+.response-input {
+  background-color: white;
+  border-style: none;
+  font-size: 20px;
+  border-radius: 20px;
+  width: 350px;
+}
+
+#submit-answer {
+  margin: 20px;
 }
 
 @media (max-width: 650px) {
@@ -65,14 +161,17 @@ input {
   }
 }
 
+
+
 #nav-main{
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-left: 35px;
+  padding-left: 160px;
   padding-right: 35px;
+  margin-top: 30px;
 }
 
 #header-main{
@@ -80,18 +179,11 @@ input {
   flex-direction: row;
 }
 
-/* #header-main.is-active{
-  display:flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-end;
-}  */
-
 #nav-main a {
   color: black;
   text-decoration: none;
   padding: 10px;
-  margin: 30px 50px 0px 0px;
+  margin: 30px 70px 0px 0px;
 }
 
 #burger {
@@ -122,7 +214,7 @@ input {
   color: white;
   text-decoration: none;
   padding: 10px;
-  margin: 30px 50px 30px 20px;
+  margin: 50px 50px 30px 20px;
 }
 
 #nav-mobile.is-active {
@@ -130,7 +222,7 @@ input {
 }
 
 #btn-signup {
-  margin: 30px 50px 0px 0px;
+  margin: 60px 50px 0px 0px;
 }
 
 #btn-signup-mobile{
