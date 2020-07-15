@@ -59,3 +59,24 @@ ul {
   align-items: center;
 
 }
+
+
+.revoke {
+  box-sizing: border-box;
+  color: crimson;
+  cursor: pointer;
+  font-weight: bold;
+  border: solid 1px grey;
+  padding: 1vh 2vw;
+  margin-top: 2vh;
+}
+
+.grant {
+  box-sizing: border-box;
+  color: green;
+  cursor: pointer;
+  font-weight: bold;
+  border: solid 1px grey;
+  padding: 1vh 2vw;
+  margin-top: 2vh;
+}
