@@ -6,9 +6,6 @@
       this.el = document.querySelector(selector);
       this.events = events;
       this.current = moment().date(1);
-      this.events.forEach(function(ev) {
-       ev.date = moment(ev.date);
-      });
       this.draw();
       var current = document.querySelector('.today');
       if(current) {
@@ -17,7 +14,6 @@
           self.openDay(current);
         }, 500);
       }
-      
     }
   
     Calendar.prototype.draw = function() {
@@ -27,7 +23,7 @@
       //Draw Month
       this.drawMonth();
   
-      this.drawLegend();
+    //   this.drawLegend();
     }
   
     Calendar.prototype.drawHeader = function() {
@@ -35,7 +31,7 @@
       if(!this.header) {
         //Create the header elements
         this.header = createElement('div', 'header');
-        this.header.className = 'header';
+        this.header.className = 'cal-header';
   
         this.title = createElement('h1');
   
@@ -57,6 +53,10 @@
   
     Calendar.prototype.drawMonth = function() {
       var self = this;
+      
+      this.events.forEach(function(ev) {
+       ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+      });
       
       
       if(this.month) {
@@ -139,8 +139,9 @@
       //Day Number
       var number = createElement('div', 'day-number', day.format('DD'));
   
-  
+  //////////////////////////////////////////////////////////////
       //Events
+
       var events = createElement('div', 'day-events');
       this.drawEvents(day, events);
   
@@ -160,7 +161,7 @@
         }, []);
   
         todaysEvents.forEach(function(ev) {
-          var evSpan = createElement('span', ev.color);
+          var evSpan = createElement('span', 'white');//ai changé ev.color en white pour créer une case blanche si evt
           element.appendChild(evSpan);
         });
       }
@@ -237,7 +238,7 @@
   
       events.forEach(function(ev) {
         var div = createElement('div', 'event');
-        var square = createElement('div', 'event-category ' + ev.color);
+        var square = createElement('div', 'event-category ','.white');
         var span = createElement('span', '', ev.eventName);
   
         div.appendChild(square);
@@ -276,22 +277,22 @@
       }
     }
   
-    Calendar.prototype.drawLegend = function() {
-      var legend = createElement('div', 'legend');
-      var calendars = this.events.map(function(e) {
-        return e.calendar + '|' + e.color;
-      }).reduce(function(memo, e) {
-        if(memo.indexOf(e) === -1) {
-          memo.push(e);
-        }
-        return memo;
-      }, []).forEach(function(e) {
-        var parts = e.split('|');
-        var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
-        legend.appendChild(entry);
-      });
-      this.el.appendChild(legend);
-    }
+    // Calendar.prototype.drawLegend = function() {
+    //   var legend = createElement('div', 'legend');
+    //   var calendars = this.events.map(function(e) {
+    //     return e.calendar + '|' + e.color;
+    //   }).reduce(function(memo, e) {
+    //     if(memo.indexOf(e) === -1) {
+    //       memo.push(e);
+    //     }
+    //     return memo;
+    //   }, []).forEach(function(e) {
+    //     var parts = e.split('|');
+    //     var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
+    //     legend.appendChild(entry);
+    //   });
+    //   this.el.appendChild(legend);
+    // }
   
     Calendar.prototype.nextMonth = function() {
       this.current.add('months', 1);
@@ -318,33 +319,36 @@
       return ele;
     }
   }();
-  
+//   fin fonction 1
+
   !function() {
     var data = [
-      { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange', date: '2014-02-08' },
-      { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange', date: '2014-03-08' },
-      { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange', date: '2014-02-13' },
-      { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange', date: '2014-02-19' },
+      { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', },
+      { eventName: 'Interview - Jr. Web Developer', calendar: 'Work',  },
+      { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
+      { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
   
-      { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue', date: '2014-02-28' },
-      { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue', date: '2014-03-19' },
-      { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue', date: '2014-02-04' },
-      { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue', date: '2014-02-01' },
+      { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
+      { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
+      { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
+      { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
   
-      { eventName: 'School Play', calendar: 'Kids', color: 'yellow', date: '2014-02-25' },
-      { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow', date: '2014-02-19' },
-      { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow', date: '2014-03-31' },
-      { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow', date: '2014-02-20' },
+      { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
+      { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
+      { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
+      { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
   
-      { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green', date: '2014-02-08' },
-      { eventName: 'Bowling Team', calendar: 'Other', color: 'green', date: '2014-02-10' },
-      { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green', date: '2014-03-04' },
-      { eventName: 'Startup Weekend', calendar: 'Other', color: 'green', date: '2014-03-17' }
+      { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
+      { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
+      { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
+      { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
     ];
   
     
   
-    
+    function addDate(ev) {
+      
+    }
   
     var calendar = new Calendar('#calendar', data);
   
