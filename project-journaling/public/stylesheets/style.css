@@ -2,6 +2,8 @@
 @import'./dashboard.css';
 @import'./calendar.css';
 
+/* @import'./calendar.css'; */
+@import'./admin.css';
 
 body {
   padding: 0px;

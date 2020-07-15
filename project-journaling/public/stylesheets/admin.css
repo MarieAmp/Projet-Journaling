@@ -1,0 +1,82 @@
+#admin_dashboard {
+  display: flex;
+  margin: 2vh 4vw;
+  justify-content: flex-start;
+  margin-top: 10vh;
+}
+
+
+
+#container_display {
+  width: 45vw;
+  height: 70vh;
+  overflow: scroll;
+  margin-left: 5vw;
+  font-size: 0.8em;
+}
+
+.input_admin {
+width: 30%;
+height: 20px;
+}
+
+.question_delete {
+  font-weight: bolder;
+  background: crimson;
+  color: aliceblue;
+text-decoration: none;
+width: 4vw;
+height: 4vh;
+border-radius: 20px;
+text-align: center;
+padding: 1px 2px;
+box-sizing: border-box;
+}
+
+.list_questions {
+  list-style: none;
+  margin: 0;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+
+#display_clear {
+  border: none;
+  background: cornsilk;
+  color: cornflowerblue;
+  width: 10vw;
+  height: 4vh;
+  border-radius: 15px;
+  margin-left: 10vw;
+}
+
+
+#container_results {
+  display: flex;
+  align-items: center;
+
+}
+
+
+.revoke {
+  box-sizing: border-box;
+  color: crimson;
+  cursor: pointer;
+  font-weight: bold;
+  border: solid 1px grey;
+  padding: 1vh 2vw;
+  margin-top: 2vh;
+}
+
+.grant {
+  box-sizing: border-box;
+  color: green;
+  cursor: pointer;
+  font-weight: bold;
+  border: solid 1px grey;
+  padding: 1vh 2vw;
+  margin-top: 2vh;
+}
