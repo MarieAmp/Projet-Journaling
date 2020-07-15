@@ -1,5 +1,3 @@
-
-
 const btnUserbyId = document.getElementById('btn_fetchUserById')
 const btnUserbyEmail = document.getElementById('btn_fetchUserByEmail')
 const btnQuestionbyKeyword = document.getElementById('btn_fetchQuestionByKeyword')
@@ -18,10 +16,11 @@ const userId = document.getElementById('user_id').value
   .then((jsonUser) => {
     console.log(jsonUser.data);
     var user = jsonUser.data;
+    //var birthday = moment(user.birthday).format("MM/DD/YYY");
     displayResults.innerHTML = ` <h3> ID - ${user._id} </h3>
     <h3> ${user.name} ${user.lastName}</h3>
     <ul> 
-      <li> Birthday - ${user.birthday}</li>
+      <li> Birthday - moment(${user.birthday}).format("MM/DD/YYY")</li>
     <li> Email - ${user.email}</li>
     <li> Plan -  ${user.plan}</li>
     <li> Admin access - ${user.admin}</li>
@@ -58,3 +57,4 @@ Questions.forEach(question => {
 btnClear.onclick = clear;
 btnUserbyId.onclick = displayUserbyId ;
 btnAllQuestions.onclick = displayAllQuestions;
+
