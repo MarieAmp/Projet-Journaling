@@ -28,7 +28,7 @@
       overflow: hidden;
     }
     
-    .header {
+    .cal-header {
       height: 50px;
       width: 420px;
       background: rgba(66, 66, 66, 1);
@@ -37,7 +37,7 @@
       z-index: 100;
     }
     
-    .header h1 {
+    .cal-header h1 {
       margin: 0;
       padding: 0;
       font-size: 20px;
