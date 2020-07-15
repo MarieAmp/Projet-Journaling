@@ -26,6 +26,17 @@ catch (err) {
 }
 })
 
+
+router.get("/user-:email", protectPrivateRoute, protectAdminRoute, async (req,res,next) => {
+  try {
+    var user = await UserModel.find({email : req.params.email});
+  res.json(user)
+  }
+  catch (err) {
+    next(err)
+  }
+  })
+
 // create, update and delete users
 
 // create, update and delete questions

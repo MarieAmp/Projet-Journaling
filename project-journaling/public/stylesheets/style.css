@@ -1,6 +1,7 @@
 @import './sign.css';
 @import'./dashboard.css';
 @import'./calendar.css';
+@import'./admin.css';
 
 
 body {

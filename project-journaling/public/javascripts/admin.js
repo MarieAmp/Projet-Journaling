@@ -16,11 +16,12 @@ const userId = document.getElementById('user_id').value
   .then((jsonUser) => {
     console.log(jsonUser.data);
     var user = jsonUser.data;
-    //var birthday = moment(user.birthday).format("MM/DD/YYY");
+    var birthday = moment(user.birthday).format("MM/DD/YYYY");
+    console.log(`it's my birthday : `, birthday)
     displayResults.innerHTML = ` <h3> ID - ${user._id} </h3>
     <h3> ${user.name} ${user.lastName}</h3>
     <ul> 
-      <li> Birthday - moment(${user.birthday}).format("MM/DD/YYY")</li>
+      <li> Birthday - ${birthday}</li>
     <li> Email - ${user.email}</li>
     <li> Plan -  ${user.plan}</li>
     <li> Admin access - ${user.admin}</li>
@@ -28,6 +29,38 @@ const userId = document.getElementById('user_id').value
   })
   .catch((err) => console.error(err))
 }
+
+var displayUserbyEmail = () => {
+  clear()
+  const userEmail = document.getElementById('user_email').value
+    axios 
+    .get(`admin/user-${userEmail}`)
+    .then((jsonUser) => {
+      console.log(jsonUser.data);
+      var user = jsonUser.data;
+      var birthday = moment(user.birthday).format("MM/DD/YYYY");
+      console.log(`it's my birthday : `, birthday)
+      displayResults.innerHTML = ` <h3> ID - ${user._id} </h3>
+      <h3> ${user.name} ${user.lastName}</h3>
+      <ul> 
+        <li> Birthday - ${birthday}</li>
+      <li> Email - ${user.email}</li>
+      <li> Plan -  ${user.plan}</li>
+      <li> Admin access - ${user.admin}</li>
+      </ul>`
+      if (user.admin) {
+        displayResults.innerHTML += `<span class="revoke" id="revoke"> Revoke admin access
+</span>`      } 
+else {displayResults.innerHTML += `<span class="grant" id="grant"> Grant admin access
+</span>`}
+    })
+    .catch((err) => console.error(err))
+  }
+
+
+
+
+
 
 var displayAllQuestions = () => {
  clear()
@@ -38,11 +71,11 @@ var displayAllQuestions = () => {
       var Questions = jsonQuestionList.data;
 
       displayResults.innerHTML = ` <h3> All questions </h3>
-      </ul>`
+      `
 Questions.forEach(question => { 
-  displayResults.innerHTML += `  <li>  ${question.question} <a href="admin/delete/question-${question._id}" class="question_delete"> X </a></li>`;
+  displayResults.innerHTML += `  <ul class="list_questions"><li> <a href="admin/delete/question-${question._id}" class="question_delete">X</a>  - ${question.question} </li> </ul>`;
 });
-      displayResults.innerHTML += `</ul>`
+      displayResults.innerHTML += ``
       var btnsRemove = document.querySelectorAll(".question_delete")
       btnsRemove.forEach( btn => btn.onclick = displayAllQuestions )
     })
