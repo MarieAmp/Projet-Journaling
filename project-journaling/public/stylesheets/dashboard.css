@@ -2,3 +2,27 @@
     width:15vh;
     height: 10vh;
 }
+
+
+#details_box {
+    z-index: 10;
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    height: 50%;
+    width: 50%;
+    overflow-wrap: break-word;
+    overflow: scroll;
+    background: cornflowerblue;
+}
+
+#details_ok {
+    position: relative;
+    bottom: 10%;
+    left: 45%;
+}
+
+
+.hidden {
+    display: none !important;
+}
