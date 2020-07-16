@@ -5,32 +5,31 @@
   margin-top: 10vh;
 }
 
-
-
 #container_display {
   width: 45vw;
   height: 70vh;
   overflow: scroll;
   margin-left: 5vw;
   font-size: 0.8em;
+  scrollbar-color: #f199c1;
 }
 
 .input_admin {
-width: 30%;
-height: 20px;
+  width: 30%;
+  height: 20px;
 }
 
 .question_delete {
   font-weight: bolder;
   background: crimson;
   color: aliceblue;
-text-decoration: none;
-width: 4vw;
-height: 4vh;
-border-radius: 20px;
-text-align: center;
-padding: 1px 2px;
-box-sizing: border-box;
+  text-decoration: none;
+  width: 4vw;
+  height: 4vh;
+  border-radius: 20px;
+  text-align: center;
+  padding: 1px 2px;
+  box-sizing: border-box;
 }
 
 .list_questions {
@@ -42,7 +41,6 @@ ul {
   padding-inline-start: 0;
 }
 
-
 #display_clear {
   border: none;
   background: cornsilk;
@@ -53,22 +51,21 @@ ul {
   margin-left: 10vw;
 }
 
-
 #container_results {
   display: flex;
   align-items: center;
-
 }
-
 
 .revoke {
   box-sizing: border-box;
   color: crimson;
   cursor: pointer;
   font-weight: bold;
-  border: solid 1px grey;
+  border: solid 1px crimson;
   padding: 1vh 2vw;
   margin-top: 2vh;
+  text-align: center;
+  width: 50%;
 }
 
 .grant {
@@ -76,7 +73,15 @@ ul {
   color: green;
   cursor: pointer;
   font-weight: bold;
-  border: solid 1px grey;
+  border: solid 1px green;
   padding: 1vh 2vw;
   margin-top: 2vh;
+  text-align: center;
+  width: 50%;
+}
+
+
+.final{
+  width: 70%;
+  cursor: default;
 }
