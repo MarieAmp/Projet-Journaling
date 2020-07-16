@@ -5,18 +5,32 @@
   margin-top: 10vh;
 }
 
+#container_fetch {
+  width: 50%;
+}
+
 #container_display {
-  width: 45vw;
-  height: 70vh;
-  overflow: scroll;
+  
   margin-left: 5vw;
   font-size: 0.8em;
   scrollbar-color: #f199c1;
 }
 
+#manage-admin, #question-admin {
+  margin: 2px 4px 2px 4px;
+}
+
 .input_admin {
-  width: 30%;
+  width: 40%;
   height: 20px;
+  position: absolute;
+  left: 40%;
+}
+
+.btn_admin {
+  position: absolute;
+  left: 85%;
+  
 }
 
 .question_delete {
@@ -54,6 +68,7 @@ ul {
 #container_results {
   display: flex;
   align-items: center;
+  position: fixed;
 }
 
 .revoke {
@@ -84,4 +99,31 @@ ul {
 .final{
   width: 70%;
   cursor: default;
+}
+
+#container_question {
+  margin: 6vh 0vw;
+  position: relative;
+}
+
+#container_admin {
+  position: relative;
+}
+
+
+#display_results {
+  position: relative;
+  top: 10%;
+  width: 45vw;
+  height: 60vh;
+  overflow: scroll;
+}
+
+#btn_fetchAllQuestions {
+  position: relative;
+  left: 30%;
+}
+
+#admin_status{
+  font-weight: bold;
 }
