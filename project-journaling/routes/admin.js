@@ -27,12 +27,12 @@ router.get(
 );
 
 router.get(
-  "/user-:email",
+  "/user/:email",
   protectPrivateRoute,
   protectAdminRoute,
   async (req, res, next) => {
     try {
-      var user = await UserModel.find({ email: req.params.email });
+      var user = await UserModel.findOne({ email: req.params.email });
       res.json(user);
     } catch (err) {
       next(err);
@@ -46,8 +46,10 @@ router.get(
   protectAdminRoute,
   async (req, res, next) => {
     try {
-      await UserModel.findByIdAndUpdate(req.params.id, { admin: false });
-      console.log("revoked admin rights")
+      var user = await UserModel.findByIdAndUpdate(req.params.id, {
+        admin: false,
+      });
+      console.log("revoked admin rights");
       res.json(user);
     } catch (err) {
       next(err);
@@ -61,8 +63,10 @@ router.get(
   protectAdminRoute,
   async (req, res, next) => {
     try {
-      await UserModel.findByIdAndUpdate(req.params.id, { admin: true });
-      console.log("granted admin rights")
+      var user = await UserModel.findByIdAndUpdate(req.params.id, {
+        admin: true,
+      });
+      console.log("granted admin rights");
       res.json(user);
     } catch (err) {
       next(err);
@@ -72,32 +76,28 @@ router.get(
 
 // create, update and delete questions
 
-router.get("/questions/all", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
-  try {
-    var questions = await QuestionModel.find();
-    res.json(questions);
-  } catch (err) {
-    res.send(err);
-  }
-});
-
-
-router.get("/question/:id", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
-  try {
-    var question = await QuestionModel.findById(req.params.id);
-    res.json(question);
-  } catch (err) {
-    res.send(err);
-  }
-});
-
-
-router.get( "/delete/question-:id",
-  protectPrivateRoute, protectAdminRoute,
+router.get(
+  "/questions/all",
+  protectPrivateRoute,
+  protectAdminRoute,
   async (req, res, next) => {
     try {
-      await QuestionModel.findByIdAndDelete(req.params.id);
-      res.json(console.log(`question ${req.params.id} deleted`));
+      var questions = await QuestionModel.find();
+      res.json(questions);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+);
+
+router.get(
+  "/question/:id",
+  protectPrivateRoute,
+  protectAdminRoute,
+  async (req, res, next) => {
+    try {
+      var question = await QuestionModel.findById(req.params.id);
+      res.json(question);
     } catch (err) {
       res.send(err);
     }
@@ -105,6 +105,33 @@ router.get( "/delete/question-:id",
 );
 
 
-/* db.stores.find( { $text: { $search: "\"coffee shop\"" } } )*/
+router.get("/question/keyword/:keyword", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+console.log('arrived in backend to fetch questions by keyword');
+try {
+  var questionList = await QuestionModel.find({ question: { $regex: `${req.params.keyword}` } });
+  console.log('found questions with keyword', req.params.keyword);
+  res.json(questionList)
+}
+catch (err) {
+  next(err);
+}
+});
+
+
+router.get(
+  "/delete/question/:id",
+  protectPrivateRoute,
+  protectAdminRoute,
+  async (req, res, next) => {
+    try {
+      await QuestionModel.findByIdAndDelete(req.params.id);
+      res.send(`question ${req.params.id} deleted`);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+);
+
+/* db.stores.find( { $question: { $regex: "\"coffee shop\"" } } )*/
 
 module.exports = router;

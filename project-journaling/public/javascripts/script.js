@@ -1,4 +1,4 @@
-//nav 
+//nav
 
 const burger = document.getElementById("burger");
 const navMobile = document.getElementById("nav-mobile");
@@ -15,24 +15,25 @@ burger.onclick = toggleNavMobile;
 const btn = document.getElementById("btn-start");
 const container = document.getElementById("container");
 const btnMood = document.getElementById("btn-mood");
-const welcomeDiv = document.getElementById("welcome-div")
-const questionDiv = document.getElementById("question-div")
+const welcomeDiv = document.getElementById("welcome-div");
+const questionDiv = document.getElementById("question-div");
 
 function displayOne() {
   axios
     .get("/question")
     .then((dbRes) => {
       console.log(dbRes.data.question);
-      welcomeDiv.innerHTML = ""
+      welcomeDiv.innerHTML = "";
       container.innerHTML = `<div id="question-div" class="slide-bck-center">
+        <div class="slide">
         <h1 class="question">${dbRes.data.question}</h1>
         <input data-question-id="${dbRes.data._id}" class="response-input" type="textarea" name="response" value="" placeholder = "Answer here" required></input>
         <button id="submit-answer" class="btn">Submit</button>
-        </div>`
+        </div>
+        </div>`;
       const submit = document.getElementById("submit-answer");
       const input = document.querySelector(".response-input");
-      submit.onclick = () => sendAnswer(input,dbRes.data._id);
-    
+      submit.onclick = () => sendAnswer(input, dbRes.data._id);
     })
     .catch((err) => console.log(err));
 }
@@ -43,53 +44,74 @@ function displayMood(answerId) {
     .then((dbRes) => {
       console.log(dbRes);
       container.innerHTML = `<div id="question-div">
+      <div class="slide">
       <h1 class="question" answer-id="${answerId}" >What's your mood today ?</h1>
-    <select name="moods" id="mood-select">
-    <option value="Very Good">Very Good</option>
-    <option value="Good">Good</option>
-    <option value="Neutral">Neutral</option>
-    <option value="Bad">Bad</option>
-    </select>
+      <div class="mood-radio">
+      <div>
+      <label for="good" class="label-mood">
+      <input type="radio" id="good" name="mood" value="good" checked>
+      <img class="img-radio" src="/images/good.png">
+      </label>
+    </div>
+    
+    <div>
+    <label for="neutral" class="label-mood">
+      <input type="radio" id="neutral" name="mood" value="neutral">
+      <img class="img-radio" src="/images/neutral.png">
+    </label>
+    </div>
+    
+    <div>
+    <label for="bad" class="label-mood">
+    <input type="radio" id="bad" name="mood" value="bad">
+    <img class="img-radio" src="/images/bad.png">
+    </label>
+
     <button id="submit-mood" class="btn">Submit</button>
+    </div>
+    
+    </div>
+    <br>
+    
+    </div>
+ 
+    
     </div> `;
-    const submitMood = document.getElementById("submit-mood");
-    const inputMood = document.querySelector("#mood-select");
-    submitMood.onclick = () => getMood(inputMood.value, answerId);
+      const submitMood = document.getElementById("submit-mood");
+      submitMood.onclick = () => getMood(answerId);
     })
     .catch((err) => console.log(err));
 }
 
 // Création variable locale pour sauvegarder en deux fois le mood puis la réponse
-function sendAnswer(input,questionId) {
-
+function sendAnswer(input, questionId) {
   axios
     .post("/answer", {
-      date:new Date(),
+      date: new Date(),
       response: [input.value],
       id_question: questionId,
-     })
+    })
     .then((dbRes) => {
-        console.log('ok' + dbRes.data)
+      console.log("ok" + dbRes.data);
       displayMood(dbRes.data._id);
     })
     .catch((err) => console.log(err));
 }
 
-function getMood(inputValue, answerId) {
-  console.log(`answerID is ${answerId}, mood is ${inputValue}`);
+function getMood(answerId) {
+  var inputMood = document.querySelector('input[name="mood"]:checked').value
+  console.log(`answerID is ${answerId}, mood is ${inputMood}`);
   axios
     .post(`/editanswer/${answerId}`, {
-      mood : `${inputValue}`
+      mood: `${inputMood}`,
     })
-    .then((Res)=> console.log(Res))
+    .then((Res) => console.log(Res))
     .catch((err) => console.log(err));
-    container.innerHTML = `<div class="question-div">
+  container.innerHTML = `<div id="question-div">
     <h1 class="title">Today's entry is saved !</h1>
     <div class="see-dashboard"><p class="typing">Check your dashboard for details <br>and resources!</p>
     <a href="/dashboard"><button class="btn">See dashboard</button></a></div>
-    </div>`
+    </div>`;
 }
 
-
 btn.onclick = displayOne;
-

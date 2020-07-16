@@ -1,9 +1,48 @@
 @import './sign.css';
 @import'./dashboard.css';
-@import'./calendar.css';
+@import'./calendar.css';  
+@import'./user.css'; 
 
-/* @import'./calendar.css'; */
-@import'./admin.css';
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+[type=radio] + img {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+
+.mood-radio {
+  display: flex;
+  flex-direction:row;
+  margin-left: 60px;
+}
+
+.label-mood {
+  margin: 60px;
+}
+
+#submit-mood {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+
+.img-radio {
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+}
+
 
 body {
   padding: 0px;
@@ -44,6 +83,7 @@ body {
   font-weight: 500;
   border-radius: 20px;
   border-style: none;
+  overflow: hidden;
 }
 
 input {
@@ -70,20 +110,20 @@ input {
   display: flex;
   flex-wrap: wrap;
   width: 800px;
-  font-size: 50px;
-  overflow: hidden; 
-  animation: 
-  appears 8s; 
+  font-size: 35px;
+  overflow: hidden;
+  margin-left: 50px;
+  padding: 0;
+  margin-top: 0px;
 
 }
 
 .title {
   font-size: 50px;
-  padding: 0px 0px 30px 200px;
-  margin: 0;
+  padding: 0px 0px 0px 200px;
   overflow: hidden; 
   white-space: nowrap; 
-  margin: 20px 0px; 
+  margin: 0px 0px; 
   letter-spacing: .10em; 
   animation: 
     typing 4s steps(40, end);
@@ -91,12 +131,10 @@ input {
 
 .hello {
   font-size: 30px;
-  padding: 0;
-  margin: 0;
   padding: 0px 0px 30px 200px;
   overflow: hidden; 
   white-space: nowrap; 
-  margin: 0 0px;
+  margin: 30px 0px;
   letter-spacing: .15em; 
   animation: 
     typing 4s steps(40, end);
@@ -109,23 +147,36 @@ input {
 
 }
 
+.welcome-text-div {
+    width: 1500px;
+    height: 300px;
+    background-color: white;
+    margin-top: 250px;
+    padding-top: 50px;
+}
+
+
 .btn-start {
-  margin: 0px 0px 30px 200px;
+  margin: 80px 0px 30px 200px;
   font-size: 20px;
 }
 
 #question-div {
-  width: 300px;
-  height: 500px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap:wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 50px;
-  border-style : 2px solid black;
- 
+  width: 1500px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 100px;
+    padding-top: 50px;
+}
+
+.slide {
+  animation : slide-in-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .response-input {
@@ -135,10 +186,11 @@ input {
   border-radius: 20px;
   width: 350px;
   margin-bottom: 10px;
+  margin-left: 50px;
 }
 
 #submit-answer {
-  margin: 20px;
+  margin: 10px 20px 20px 45px;
 }
 
 @media (max-width: 650px) {
@@ -174,6 +226,7 @@ input {
   padding-left: 160px;
   padding-right: 35px;
   margin-top: 30px;
+  z-index: 10;
 }
 
 #header-main{
@@ -225,6 +278,7 @@ input {
 
 #btn-signup {
   margin: 60px 50px 0px 0px;
+  z-index: 10;
 }
 
 #btn-signup-mobile{
@@ -245,5 +299,37 @@ input {
  text-align: center;
 }
 
-/*# sourceMappingURL=style.css.map */
+  /* .btn::after {
+    display: none;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(240, 232, 232, 0.822);
+
+    width: 100px;
+    height: 100px;
+  
+
+    top: 50%;
+    left: 50%;
+   
+
+    animation: ripple 1s;
+    opacity: 0;
+  }
+  .btn:focus:not(:active)::after {
+    display: block;
+  }
+
+  @keyframes ripple {
+    from {
+      opacity: 1;
+      transform: scale(0);
+    }
+    to {
+      opacity: 0;
+      transform: scale(10);
+    }
+  }  */
+
 

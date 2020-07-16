@@ -1,58 +1,59 @@
-
 <div id="admin_dashboard">
-<div id="container_fetch">
-<div id="container_admin">
-<h2>Manage Users</h2>
+  <div id="container_fetch">
+    <div id="container_admin">
+      <h2>Manage Users</h2>
 
-  <div class="manage-admin">
-    <label for="user_id"> Retrive user by id</label>
-    <input class="input_admin" type="text" name="user_id" id="user_id" value="5f0c84a38f22a7050a8961de">
-    <button type="submit" id="btn_fetchUserById">Fetch</button>
+      <div class="manage-admin">
+        <label for="user_id"> Retrive user by id</label>
+        <input class="input_admin" type="text" name="user_id" id="user_id" value="5f0c84a38f22a7050a8961de">
+        <button class="btn_admin" type="submit" id="btn_fetchUserById">Fetch</button>
+      </div>
+
+      <div class="manage-admin">
+        <label for="user_mail"> Retrive user by email</label>
+        <input class="input_admin" type="text" name="user_email" id="user_email" value="dvpr@pjt.co">
+        <button class="btn_admin" type="submit" id="btn_fetchUserByEmail">Fetch</button>
+      </div>
+    </div>
+
+
+
+    <div id="container_question">
+      <h2>Manage Questions</h2>
+
+      <div class="question-admin">
+        <label for="questions_all"> Retrive all questions </label>
+        <button type="submit" id="btn_fetchAllQuestions">Fetch</button>
+      </div>
+
+      <div class="question-admin">
+        <label for="question_id"> Retrive question by id</label>
+        <input class="input_admin" type="text" name="question_id" id="question_id" value="5f10531074d55c0cbf71442d">
+        <button class="btn_admin" type="submit" id="btn_fetchQuestionById">Fetch</button>
+      </div>
+
+      <div class="question-admin">
+        <label for="question_keyword">Retrive question by keyword</label>
+        <input class="input_admin" type="text" name="question_keyword" id="question_keyword" value="what">
+        <button class="btn_admin" type="submit" id="btn_fetchQuestionByKeyword">Fetch</button>
+      </div>
+
+
+
+      <div class="manage-questions" id="display_questions"></div>
+
+    </div>
   </div>
 
-  <div class="manage-admin">
-    <label for="user_mail"> Retrive user by email</label>
-    <input class="input_admin" type="text" name="user_email" id="user_email" value="dvpr@pjt.co">
-    <button type="submit" id="btn_fetchUserByEmail">Fetch</button>
-  </div>
-</div>
-
-<hr>
-
-<div id="container_question">
-  <h2>Manage Questions</h2>
-  <div class="manage-question">
-    <label for="question_id"> Retrive question by id</label>
-    <input class="input_admin" type="text" name="question_id" id="question_id" value="5f0def51deb4e94506b3390b">
-    <button type="submit" id="btn_fetchQuestionById">Fetch</button>
-  </div>
-
-  <div class="question-admin">
-    <label for="question_keyword">Retrive question by keyword</label>
-    <input class="input_admin" type="text" name="question_keyword" id="question_keyword" value="what">
-    <button type="submit" id="btn_fetchQuestionByKeyword">Fetch</button>
-  </div>
-
-  <div class="question-admin">
-    <label for="questions_all"> Retrive question all questions </label>
-    <button type="submit" id="btn_fetchAllQuestions">Fetch</button>
-  </div>
-
-  <div class="manage-questions" id="display_questions">
-
-  </div>
-</div>
-</div>
 
 <div id="container_display">
 
-<div id="container_results">
-  <h2>Results</h2>
-  <button id="display_clear">Clear</button>
+  <div id="container_results">
+    <h2>Results</h2>
+    <button id="display_clear">Clear</button>
   </div>
-<div id="display_results">
+  <div id="display_results">
+Your results here.
 
-
-</div>
-</div>
+  </div>
 </div>

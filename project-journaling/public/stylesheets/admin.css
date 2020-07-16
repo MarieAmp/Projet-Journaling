@@ -5,32 +5,46 @@
   margin-top: 10vh;
 }
 
-
+#container_fetch {
+  width: 50%;
+}
 
 #container_display {
-  width: 45vw;
-  height: 70vh;
-  overflow: scroll;
+  
   margin-left: 5vw;
   font-size: 0.8em;
+  scrollbar-color: #f199c1;
+}
+
+#manage-admin, #question-admin {
+  margin: 2px 4px 2px 4px;
 }
 
 .input_admin {
-width: 30%;
-height: 20px;
+  width: 40%;
+  height: 20px;
+  position: absolute;
+  left: 40%;
+}
+
+.btn_admin {
+  position: absolute;
+  left: 85%;
+  
 }
 
 .question_delete {
   font-weight: bolder;
   background: crimson;
   color: aliceblue;
-text-decoration: none;
-width: 4vw;
-height: 4vh;
-border-radius: 20px;
-text-align: center;
-padding: 1px 2px;
-box-sizing: border-box;
+  text-decoration: none;
+  width: 4vw;
+  height: 4vh;
+  border-radius: 20px;
+  text-align: center;
+  padding: 1px 2px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .list_questions {
@@ -42,7 +56,6 @@ ul {
   padding-inline-start: 0;
 }
 
-
 #display_clear {
   border: none;
   background: cornsilk;
@@ -53,22 +66,22 @@ ul {
   margin-left: 10vw;
 }
 
-
 #container_results {
   display: flex;
   align-items: center;
-
+  position: fixed;
 }
-
 
 .revoke {
   box-sizing: border-box;
   color: crimson;
   cursor: pointer;
   font-weight: bold;
-  border: solid 1px grey;
+  border: solid 1px crimson;
   padding: 1vh 2vw;
   margin-top: 2vh;
+  text-align: center;
+  width: 50%;
 }
 
 .grant {
@@ -76,7 +89,67 @@ ul {
   color: green;
   cursor: pointer;
   font-weight: bold;
-  border: solid 1px grey;
+  border: solid 1px green;
   padding: 1vh 2vw;
   margin-top: 2vh;
+  text-align: center;
+  width: 50%;
 }
+
+
+.final{
+  width: 70%;
+  cursor: default;
+}
+
+#container_question {
+  margin: 6vh 0vw;
+  position: relative;
+}
+
+#container_admin {
+  position: relative;
+}
+
+
+#display_results {
+  position: relative;
+  top: 10%;
+  width: 45vw;
+  height: 60vh;
+  overflow: scroll;
+}
+
+#btn_fetchAllQuestions {
+  position: relative;
+  left: 30%;
+}
+
+#admin_status{
+  font-weight: bold;
+}
+
+.question_text {
+  color: rgb(136, 58, 209);
+  font-size: 2rem;
+}
+
+.questions_text {
+  color: deeppink;
+  font-size: 1.1rem;
+}
+
+#blank {
+height: 2vh;
+background: transparent;
+}
+
+.delete {
+  background: transparent;
+  color: crimson;
+  border: thin 1px ;
+  border-radius: 20px;
+  position: relative;
+  left: 70%;
+}
+

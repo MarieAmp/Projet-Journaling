@@ -1,6 +1,6 @@
 const inspiContainer = document.getElementById("div-quote");
 const btnQuote = document.getElementById("get-quote");
-const widget = document.getElementById("widget-container");
+const widget = document.getElementById("spo-quote");
 const btnWidget = document.getElementById("get-widget");
 
 function displayQuote() {
@@ -17,8 +17,7 @@ function displayQuote() {
 }
 
 function spotifyWidget() {
-  widget.innerHTML = ` <p class="dash-title">Meditate</p>
-  <p class="spotify-text">Listen to the perfect playlist for your meditation session</p>
+  widget.innerHTML = `
   <iframe class="spotify-widget" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZqd5JICZI0u" width="300" height="380" frameborder="0"
     allowtransparency="true" allow="encrypted-media"></iframe>`;
 }

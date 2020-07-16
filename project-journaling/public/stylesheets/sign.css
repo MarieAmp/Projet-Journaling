@@ -33,7 +33,7 @@
 
 .container_item {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   justify-content: baseline;
   align-items: center;
   width: 30vw;
