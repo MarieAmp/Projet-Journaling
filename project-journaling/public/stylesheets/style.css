@@ -1,5 +1,6 @@
 @import './sign.css';
 @import'./dashboard.css';
+<<<<<<< HEAD
 @import'./calendar.css'; 
 @import'./user.css'; 
 
@@ -44,7 +45,12 @@
   width: 100px;
   height: 100px;
 }
+=======
+@import'./calendar.css';
+>>>>>>> master
 
+/* @import'./calendar.css'; */
+@import'./admin.css';
 
 body {
   padding: 0px;

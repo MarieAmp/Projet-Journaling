@@ -5,8 +5,13 @@ const fileUploader = require("./../config/cloudinary");
 const axios = require("axios");
 const answerModel = require("../models/Answers");
 const QuestionModel = require("../models/Question");
+<<<<<<< HEAD
 const hbs=require("hbs")
 require("./../middlewares/exposeLoginStatus")
+=======
+const hbs = require("hbs");
+const { db } = require("../models/Answers");
+>>>>>>> master
 
 function getQuote() {
   return axios.get(
@@ -27,34 +32,8 @@ router.get("/quote", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/calendar", (req,res,next)=>{
-  res.render("./../views/partials/calendar.hbs");
-     })
-  
-    // router.get("/calendar", (req,res,next)=>{
-    //   answerModel
-    //   .find()
-    //   .populate("Question")
-    //   .then((dbRes)=>{
-    //     var questions=[];
-    //     var dbResp=dbRes;
-    //     dbResp.forEach((resp)=>{
-    //       questions.push(resp.id_question);
-    //       questions.forEach((quest)=>{
-    //         QuestionModel.findById(quest)
-    //         .then((res)=>{
-    //           var pastQuestions=res.question
-    //           console.log(pastQuestions)
-    //         })
-    //         .catch((err)=>{console.log(err)
-    //         })      
-    //       })
-    //         }) 
-            
-    //       })
-    //       .catch(next)
-    //     })
-      
+
+
 
 
 module.exports = router;

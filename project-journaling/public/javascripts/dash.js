@@ -41,5 +41,6 @@ function onPlayerReady(event) {
 }
 
 
+
 btnQuote.onclick = displayQuote;
 btnWidget.onclick = spotifyWidget;
