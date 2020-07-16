@@ -94,5 +94,7 @@ app.use('/profile', profile);
 const calend = require('./routes/Cal')
 app.use('/calendar', calend);
 
+app.use(require("./middlewares/exposeLoginStatus"));
+
 
 module.exports = app;

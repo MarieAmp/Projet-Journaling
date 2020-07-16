@@ -5,13 +5,9 @@ const fileUploader = require("./../config/cloudinary");
 const axios = require("axios");
 const answerModel = require("../models/Answers");
 const QuestionModel = require("../models/Question");
-<<<<<<< HEAD
-const hbs=require("hbs")
 require("./../middlewares/exposeLoginStatus")
-=======
 const hbs = require("hbs");
 const { db } = require("../models/Answers");
->>>>>>> master
 
 function getQuote() {
   return axios.get(

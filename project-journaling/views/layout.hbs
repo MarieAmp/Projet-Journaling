@@ -22,6 +22,10 @@
 <body>
   {{>navMain}}
 
+        {{#if isAdmin}}
+        {{> navAdmin}}
+        {{/if}}
+
   {{{body}}}
 
 
