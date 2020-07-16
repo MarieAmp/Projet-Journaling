@@ -104,14 +104,28 @@ router.get(
   }
 );
 
+
+router.get("/question/keyword/:keyword", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+console.log('arrived in backend to fetch questions by keyword');
+try {
+  var questionList = await QuestionModel.find({ question: { $regex: `${req.params.keyword}` } });
+  console.log('found questions with keyword', req.params.keyword);
+  res.json(questionList)
+}
+catch (err) {
+  next(err);
+}
+});
+
+
 router.get(
-  "/delete/question-:id",
+  "/delete/question/:id",
   protectPrivateRoute,
   protectAdminRoute,
   async (req, res, next) => {
     try {
       await QuestionModel.findByIdAndDelete(req.params.id);
-      res.json(console.log(`question ${req.params.id} deleted`));
+      res.send(`question ${req.params.id} deleted`);
     } catch (err) {
       res.send(err);
     }

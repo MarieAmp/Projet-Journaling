@@ -44,6 +44,7 @@
   text-align: center;
   padding: 1px 2px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .list_questions {
@@ -127,3 +128,28 @@ ul {
 #admin_status{
   font-weight: bold;
 }
+
+.question_text {
+  color: rgb(136, 58, 209);
+  font-size: 2rem;
+}
+
+.questions_text {
+  color: deeppink;
+  font-size: 1.1rem;
+}
+
+#blank {
+height: 2vh;
+background: transparent;
+}
+
+.delete {
+  background: transparent;
+  color: crimson;
+  border: thin 1px ;
+  border-radius: 20px;
+  position: relative;
+  left: 70%;
+}
+

@@ -8,6 +8,8 @@ const btnAllQuestions = document.getElementById("btn_fetchAllQuestions");
 const displayResults = document.getElementById("display_results");
 const btnClear = document.getElementById("display_clear");
 
+// ADMIN MANAGEMENT
+
 var revokeAdmin = () => {
   var revokeDiv = document.getElementById("revoke");
   var userId = revokeDiv.getAttribute("userID");
@@ -44,9 +46,27 @@ var manageAccess = (adminStatus, userId) => {
   }
 };
 
+
+// QUESTION MANAGEMENT
+
+var deleteQuestion = () => {
+  var spanQuestionId = document.querySelector('.span_question_id');
+  var questionId = spanQuestionId.getAttribute('question_id')
+axios.get(`admin/delete/question/${questionId}`)
+.then((dbRes) => {
+  console.log(dbRes)
+  displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
+})
+.catch((err) => {
+  console.log(err)
+  displayResults.innerHTML = `<p class="revoke final">  Could not delete question #${questionId} <br> sorry. </p>`;
+});
+}
+
+
 //CLEARS RESULTS
 var clear = () => {
-  displayResults.innerHTML = "";
+  displayResults.innerHTML = "...";
 };
 //
 
@@ -70,7 +90,10 @@ var displayUserbyId = () => {
     </ul>`;
       manageAccess(user.admin, user._id);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.log(err)
+      displayResults.innerHTML = `<p>  Could not delete retrieve user <br> #${userId} <br> sorry. </p>`;
+    });
 };
 
 var displayUserbyEmail = () => {
@@ -95,7 +118,10 @@ var displayUserbyEmail = () => {
       //var adminStatus = document.getElementById("admin_status").innerText;
       manageAccess(user.admin, user._id);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.log(err)
+      displayResults.innerHTML = `<p>  Could not delete retrieve user with <br> email : ${userEmail} <br> sorry. </p>`;
+    });
 };
 
 var displayAllQuestions = () => {
@@ -109,13 +135,15 @@ var displayAllQuestions = () => {
       displayResults.innerHTML = ` <h3> All questions </h3>
       `;
       Questions.forEach((question) => {
-        displayResults.innerHTML += `  <ul class="list_questions"><li> <a href="admin/delete/question-${question._id}" class="question_delete">X</a>  - ${question.question} </li> </ul>`;
+        displayResults.innerHTML += `  <ul class="list_questions"><li> <span class="span_question_id question_delete" question_id="${question._id}"> X</span>  - ${question.question} </li> </ul>`;
       });
       displayResults.innerHTML += ``;
       var btnsRemove = document.querySelectorAll(".question_delete");
       btnsRemove.forEach((btn) => (btn.onclick = displayAllQuestions));
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {console.log(err)
+      displayResults.innerHTML = `<p>  Could not retrieve all questions <br> sorry. </p>`;
+    });
 };
 
 var displayOneQuestion = () => {
@@ -128,18 +156,58 @@ var displayOneQuestion = () => {
       console.log(jsonQuestion.data);
       var question = jsonQuestion.data;
 
-      displayResults.innerHTML = ` <h3> Question #${question._id} </h3>
-      <p class="question"> ${question.question} </p>
-      <p class="theme">  theme : ${question.theme} </p>
+      displayResults.innerHTML = ` <h3> Question # <span class="span_question_id" question_id="${question._id}"> ${question._id} </span></h3>
+      <aside class="theme">  theme : ${question.theme} </aside>
+      <p class="question_text"> ${question.question} </p>
+      <button class="delete">Delete question</button>
       <button id="display_all">All questions</button>`;
 
       var btnDisplayAll = document.getElementById("display_all");
       btnDisplayAll.onclick = displayAllQuestions;
+var btnDelete = document.querySelector(".delete")
+btnDelete.onclick = deleteQuestion;
+
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {console.log(err)
+      displayResults.innerHTML = `<p>  Could not retrieve question # ${questionId} <br> sorry. </p>`;
+    });
 };
+
+
+var displayKeyword = () => {
+  var questionKeyword = document.getElementById("question_keyword").value;
+  console.log("display questions requested for keyword : ", questionKeyword);
+  clear();
+  axios
+    .get(`admin/question/keyword/${questionKeyword}`)
+    .then((jsonQuestionsList) => {
+      console.log(jsonQuestionsList.data);
+      var questions = jsonQuestionsList.data;
+      displayResults.innerHTML = "";
+      questions.forEach( question => {
+        displayResults.innerHTML += ` <h3> Question # <span class="span_question_id" question_id="${question._id}"> ${question._id} </span></h3>
+      <aside class="theme">  theme : ${question.theme} </aside>
+      <p class="questions_text"> ${question.question} </p>
+      <button class="delete">Delete question</button> <div id="blank"></div>`;
+var btnDelete = document.querySelector(".delete");
+btnDelete.onclick = deleteQuestion;
+      })
+      
+      
+})
+.catch((err) => {console.log(err);
+  displayResults.innerHTML = `<p>  Could not retrieve questions with <br> keyword : ${questionKeyword} <br> sorry. </p>`;
+})
+};
+
+
+
+
+
 
 btnClear.onclick = clear;
 btnUserbyId.onclick = displayUserbyId;
 btnUserbyEmail.onclick = displayUserbyEmail;
 btnAllQuestions.onclick = displayAllQuestions;
+btnQuestionbyId.onclick = displayOneQuestion;
+btnQuestionbyKeyword.onclick = displayKeyword;
