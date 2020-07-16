@@ -2,7 +2,7 @@
 <section id="dashboard-div">
 <div class="first-div">
   <div class="text">
-  <h1 class="title-dash">Hi (utilisateur), <br>Welcome to your dashboard</h1>
+  <h1 class="title-dash">Hi {{this.name}}, <br>Welcome to your dashboard</h1>
   <p class="text-dash">Meditate, get inspired, <br>and track all your journey from here</p>
   <button href="/calendar" class="btn" id="btn-calendar">See my calendar</button>
   </div>
@@ -10,13 +10,15 @@
   <section id="dashboard-div2">
     <div class="second-div">
 {{> inspiQuotes quote}}
-{{> dailyQuestion}}
-
-
 
 </div>
-<div class="second-div">
+
+<div class="third-div">
 {{> youtube}}
+
+</div>
+ <div class="fourth-div">
+
 {{> spotify}}
 </div>
 </section>

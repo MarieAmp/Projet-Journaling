@@ -5,6 +5,7 @@ const fileUploader = require("./../config/cloudinary");
 const axios = require("axios");
 const answerModel = require("../models/Answers");
 const QuestionModel = require("../models/Question");
+require("./../middlewares/exposeLoginStatus")
 const hbs = require("hbs");
 const { db } = require("../models/Answers");
 
@@ -15,7 +16,7 @@ function getQuote() {
 }
 
 router.get("/", (req, res, next) => {
-  res.render("dashboard");
+  res.render("dashboard", req.session.currentUser);
 });
 
 router.get("/quote", (req, res, next) => {

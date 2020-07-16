@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("./config/mongodb");
+require("./helpers/hbs")
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -92,6 +93,8 @@ app.use('/profile', profile);
 //TO CALENDAR
 const calend = require('./routes/Cal')
 app.use('/calendar', calend);
+
+app.use(require("./middlewares/exposeLoginStatus"));
 
 
 module.exports = app;
