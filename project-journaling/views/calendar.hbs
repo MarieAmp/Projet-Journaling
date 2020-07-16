@@ -1,4 +1,16 @@
-<div id="calendar"></div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 <script type="module" src="/javascripts/calendar.js"></script>
-<button id="see-cal">See my entries</button>
+
+<div id="cal-container">
+
+    <div id="widget-cal">
+        {{> widgetCal}}
+    </div>
+
+    <div id="past-ans">
+        <h1 id="quest-title">Dive through your journaling experience</h1>
+        <h2 id="pastQ"></h2>
+        <p id="pastA"></p>
+    </div>
+
+</div>
