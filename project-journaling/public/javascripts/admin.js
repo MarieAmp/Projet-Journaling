@@ -5,8 +5,11 @@ const btnQuestionbyKeyword = document.getElementById(
 );
 const btnQuestionbyId = document.getElementById("btn_fetchQuestionById");
 const btnAllQuestions = document.getElementById("btn_fetchAllQuestions");
+const btnAllUsers = document.getElementById("btn_fetchAllUsers");
+const btnCreateQuestion = document.getElementById("btn_createQuestion");
+
 const displayResults = document.getElementById("display_results");
-var nbquestionsElt = document.getElementById('nb_results')
+var nbResultsElt = document.getElementById('nb_results')
 const btnClear = document.getElementById("display_clear");
 
 // ADMIN MANAGEMENT
@@ -64,13 +67,35 @@ var deleteQuestion = () => {
     });
 };
 
+
+var createQuestion = () => {
+  var questionText = document.getElementById("question_text").value
+var questionTheme = document.querySelector('input[name="theme"]:checked')
+  axios.post("admin/question/new", { question : `${questionText}`, theme : `${questionTheme}`})
+  .then((dbRes) => {
+    var newQuestion = dbRes.data;
+    displayResults.innerHTML = `New question created <br> <h3> Question # <span class="span_question_id" question_id="${newQuestion._id}"> ${newQuestion._id} </span></h3>
+    <aside class="theme">  theme : ${newQuestion.theme} </aside>
+    <p class="questions_text"> ${newQuestion.question} </p>
+    `
+  })
+  .catch((err) => {
+    console.error(err);
+    displayResults.innerHTML = `Could not create new question <br> sorry.`;
+  })
+
+};
+
+
 //CLEARS RESULTS
 var clear = () => {
   displayResults.innerHTML = "";
-  nbquestionsElt.innerText = "";
+  nbResultsElt.innerText = "";
 };
-//
 
+
+
+//DISPLAY USERS 
 var displayUserbyId = () => {
   clear();
   const userId = document.getElementById("user_id").value;
@@ -125,6 +150,40 @@ var displayUserbyEmail = () => {
     });
 };
 
+var displayAllUsers = () => {
+  clear();
+  axios
+    .get(`admin/users/all`)
+    .then((jsonUserList) => {
+      console.log(jsonUserList.data);
+      var users = jsonUserList.data;
+      nbResultsElt.innerText = `${users.length}`;
+      displayResults.innerHTML = ` <h3> All users </h3>
+      `;
+      users.forEach((user) => {
+        var birthday = moment(user.birthday).format("MM/DD/YYYY");
+        displayResults.innerHTML += `  <h3> ID - ${user._id} </h3>
+        <h3> ${user.name} ${user.lastName}</h3>
+        <ul> 
+          <li> Birthday - ${birthday}</li>
+        <li> Email - ${user.email}</li>
+        <li> Plan -  ${user.plan}</li>
+        <li> Admin access - <span id="admin_status">${user.admin}</span></li>
+        </ul>
+        <div class="blank"> <div>`;
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      displayResults.innerHTML = `<p>  Could not retrieve all users <br> sorry. </p>`;
+    });
+};
+
+
+
+
+
+//DISPLAY QUESTIONS
 var displayAllQuestions = () => {
   clear();
   axios
@@ -132,7 +191,7 @@ var displayAllQuestions = () => {
     .then((jsonQuestionList) => {
       console.log(jsonQuestionList.data);
       var Questions = jsonQuestionList.data;
-      nbquestionsElt.innerText = `${Questions.length}`;
+      nbResultsElt.innerText = `${Questions.length}`;
       displayResults.innerHTML = ` <h3> All questions </h3>
       `;
       Questions.forEach((question) => {
@@ -181,7 +240,7 @@ var displayKeyword = () => {
     .then((jsonQuestionsList) => {
       console.log(jsonQuestionsList.data);
       var questions = jsonQuestionsList.data;
-      nbquestionsElt.innerText = `${questions.length}`;
+      nbResultsElt.innerText = `${questions.length}`;
       displayResults.innerHTML = `<br>`;
       questions.forEach((question) => {
         displayResults.innerHTML += ` <h3> Question # <span class="span_question_id" question_id="${question._id}"> ${question._id} </span></h3>
@@ -198,9 +257,38 @@ var displayKeyword = () => {
     });
 };
 
+var createQuestionForm = () => {
+  displayResults.innerHTML = `<h3> Create a new question </h3>
+  
+  <label class="create_label" for="question_text">Question</label>
+  <input class ="input_question" type="text" name="question" id="question_text">
+  <label class="create_label" for="question_theme">Theme</label>
+  <select>
+  <option name="theme" value="relationships" >relationships</option>
+  <option name="theme" value="personality" >personality</option>
+  <option name="theme" value="lifestyle" >lifestyle</option>
+  <option name="theme" value="work" >work</option>
+  <option name="theme" value="deep" >deep</option>
+  </select>
+  <button id="btn_newQuestion">create new question</button>
+  </form>`
+
+  
+  var btn_newQuestion = document.getElementById("btn_newQuestion")
+  btn_newQuestion.onclick = createQuestion
+}
+
+//
+
+
+// EVT LISTENERS
 btnClear.onclick = clear;
 btnUserbyId.onclick = displayUserbyId;
 btnUserbyEmail.onclick = displayUserbyEmail;
 btnAllQuestions.onclick = displayAllQuestions;
 btnQuestionbyId.onclick = displayOneQuestion;
 btnQuestionbyKeyword.onclick = displayKeyword;
+btnAllUsers.onclick = displayAllUsers;
+btnCreateQuestion.onclick = createQuestionForm;
+
+

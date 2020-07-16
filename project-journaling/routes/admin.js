@@ -74,7 +74,23 @@ router.get(
   }
 );
 
-// create, update and delete questions
+router.get(
+  "/users/all",
+  protectPrivateRoute,
+  protectAdminRoute,
+  async (req, res, next) => {
+    try {
+      var users = await UserModel.find();
+      res.json(users);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+);
+
+
+
+// read, create and delete questions
 
 router.get(
   "/questions/all",
@@ -118,6 +134,18 @@ catch (err) {
 });
 
 
+router.get("/question/new", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+console.log('in back to create new question with ', req.body);
+try {
+  var newQuestion = await QuestionModel.create(req.body);
+  res.json(newQuestion)
+}
+catch(err) {
+  res.send(console.error(err))
+}
+})
+
+
 router.get(
   "/delete/question/:id",
   protectPrivateRoute,
@@ -132,6 +160,5 @@ router.get(
   }
 );
 
-/* db.stores.find( { $question: { $regex: "\"coffee shop\"" } } )*/
 
 module.exports = router;
