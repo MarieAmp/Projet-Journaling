@@ -139,7 +139,7 @@ ul {
   font-size: 1.1rem;
 }
 
-#blank {
+.blank {
 height: 2vh;
 background: transparent;
 }
@@ -147,9 +147,29 @@ background: transparent;
 .delete {
   background: transparent;
   color: crimson;
-  border: thin 1px ;
+  border: thin .4px ;
   border-radius: 20px;
   position: relative;
-  left: 70%;
+  left: 35%;
 }
 
+.results {
+  color: deeppink;
+}
+
+.btn_admin {
+  background: transparent;
+  color: cornflowerblue;
+  border: thin .4px ;
+  border-radius: 20px;
+  position: absolute;
+  left: 85%;
+}
+
+.btn_all {
+  background: whitesmoke;
+  color: cornflowerblue;
+  border: thin .4px ;
+  border-radius: 20px;
+  margin: auto;
+}

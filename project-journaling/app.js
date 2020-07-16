@@ -43,8 +43,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // CUSTOM MIDDLEWARES
-console.log("hello")
 if (dev_mode === true) {
+  console.log('devmode enabled');
   app.use(require("./middlewares/devmode")); // triggers dev mode during dev phase
   app.use(require("./middlewares/debugSessionInfos")); // displays session debug
 }
@@ -91,7 +91,8 @@ const profile = require('./routes/profile')
 app.use('/profile', profile);
 
 //TO CALENDAR
-const calend = require('./routes/Cal')
+const calend = require('./routes/Cal');
+const { Console } = require("console");
 app.use('/calendar', calend);
 
 app.use(require("./middlewares/exposeLoginStatus"));

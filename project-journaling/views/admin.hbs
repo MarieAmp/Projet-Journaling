@@ -14,17 +14,19 @@
         <input class="input_admin" type="text" name="user_email" id="user_email" value="dvpr@pjt.co">
         <button class="btn_admin" type="submit" id="btn_fetchUserByEmail">Fetch</button>
       </div>
+
+<div class="blank"></div>
+      <div class="question-admin">
+        <label for="questions_all"> Retrive all users </label>
+        <button class="btn_all" type="submit" id="btn_fetchAllQuestions">Retrive all users </button>
+      </div>
+
     </div>
 
 
 
     <div id="container_question">
       <h2>Manage Questions</h2>
-
-      <div class="question-admin">
-        <label for="questions_all"> Retrive all questions </label>
-        <button type="submit" id="btn_fetchAllQuestions">Fetch</button>
-      </div>
 
       <div class="question-admin">
         <label for="question_id"> Retrive question by id</label>
@@ -38,6 +40,11 @@
         <button class="btn_admin" type="submit" id="btn_fetchQuestionByKeyword">Fetch</button>
       </div>
 
+<div class="blank"></div>
+      <div class="question-admin">
+        <label for="questions_all"> Retrive all questions </label>
+        <button class="btn_all" type="submit" id="btn_fetchAllQuestions">Retrive all questions </button>
+      </div>
 
 
       <div class="manage-questions" id="display_questions"></div>
@@ -49,7 +56,7 @@
 <div id="container_display">
 
   <div id="container_results">
-    <h2>Results</h2>
+    <h2><span class="results" id="nb_results"></span> Results</h2>
     <button id="display_clear">Clear</button>
   </div>
   <div id="display_results">
