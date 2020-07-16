@@ -12,16 +12,36 @@ router.get("/", (req, res, next) => {
   res.render("calendar");
 });
 
-router.get("/show", (req, res,next) => {
+router.get("/show", (req, res, next) => {
   answerModel
     .find()
-    .populate("Question")
+    .populate("id_question")
     .then((dbRes) => {
-      console.log(dbRes)      
-      res.json(dbRes)
+      console.log(dbRes);
+      res.json(dbRes);
     })
-    .catch(next) 
+    .catch(next);
 });
+
+// router.get("/show", (req, res, next) => {
+//   answerModel
+//     .find()
+//     .populate("Question")
+//     .then((dbRes) => {
+//       console.log(dbRes);
+//       res.json(dbRes);
+//       dbRes.forEach((resp) => {
+//         QuestionModel.findById(resp.id_question).then((secondres) => {
+//           console.log(secondres);
+//           res.json(secondres) ;
+//         });
+//         dbRes.question = secondres.question;
+//         console.log("2--", dbRes);
+//         // res.json(dbRes)
+//       });
+//     })
+//     .catch(next);
+// });
 
 // router.get("/calendar", (req, res, next) => {
 //   answerModel
