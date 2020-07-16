@@ -1,24 +1,23 @@
-function getData() {
-  axios
-    .get("/calendar/show")
-    .then((dbRes) => {
-      console.log(dbRes)
-      let data=dbRes.data
-      console.log(data)
-    })
-    .catch((err) => console.log(err))
-    }
 
 
 const calBtn = document.getElementById("see-cal");
 
-calBtn.onclick = getData;
+// calBtn.onclick = getData;
 
-
-
-
-!function () {
+!(function () {
   var today = moment();
+  function getData() {
+    axios
+      .get("/calendar/show")
+      .then((dbRes) => {
+        console.log(dbRes);
+        let data = dbRes.data;
+        console.log(data);
+        var calendar = new Calendar("#calendar", data)
+      })
+      .catch((err) => console.log(err));
+  }
+  calBtn.onclick = getData;
 
   function Calendar(selector, events) {
     this.el = document.querySelector(selector);
@@ -196,7 +195,7 @@ calBtn.onclick = getData;
   };
 
   Calendar.prototype.getDayClass = function (day) {
-    classes = ["day"];
+    var classes = ["day"];
     if (day.month() !== this.current.month()) {
       classes.push("other");
     } else if (today.isSame(day, "day")) {
@@ -272,7 +271,7 @@ calBtn.onclick = getData;
     events.forEach(function (ev) {
       var div = createElement("div", "event");
       var square = createElement("div", "event-category " + "white");
-      var span = createElement("span", "", ev.question); //changer eventName par question
+      var span = createElement("span", "", ev.id_question.question); //changer eventName par question
 
       div.appendChild(square);
       div.appendChild(span);
@@ -310,7 +309,6 @@ calBtn.onclick = getData;
     }
   };
 
-
   Calendar.prototype.nextMonth = function () {
     this.current.add("months", 1);
     this.next = true;
@@ -335,11 +333,8 @@ calBtn.onclick = getData;
     }
     return ele;
   }
-}();
+})();
 //   fin fonction 1
-
-
-
 
 // !(function () {
 //   var data = [
@@ -355,4 +350,3 @@ calBtn.onclick = getData;
 
 //   var calendar = new Calendar("#calendar", data);
 // })();
-
