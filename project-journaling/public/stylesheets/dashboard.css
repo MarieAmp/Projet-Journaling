@@ -28,6 +28,19 @@
 }
 
 #quote-container {
+  display: flex;
+  width: 60%;
+  height: 300px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 20px;
+
+}
+
+/* #quote-container {
     display: flex; 
     width: 60%;
     height: 300px;
@@ -38,7 +51,7 @@
     padding: 10px;
     border-radius: 20px; 
     margin: 20px;
-}
+} */
 
 #div-quote {
     height: 200px;
@@ -46,10 +59,15 @@
     margin-bottom: 30px
 }
 
+#spo-quote {
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 30px
+}
+
 .quote-text {
     font-size: 18px;
     color: black;
-    width: 60%;
     padding-left: 50px;
     animation:
     appears 4s;
@@ -94,13 +112,33 @@
 }
 
 .second-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 1500px;
+  background-color: white;
+}
+
+.fourth-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 1500px;
+  background-color: white;
+  height: 420px;
+  margin-top: 130px;
+}
+
+/* .second-div {
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     width:90%;
     background-color: rgba(0, 0, 0, 0.178);
-}
+} */
 
 @keyframes slide-in-left {
     0% {
@@ -128,10 +166,29 @@
         width: 90%;
         margin: 5px;
     }
+
+    .quote-text {
+      font-size: 18px;
+      color: black;
+      /* padding-left: 50px; */
+      animation: appears 4s;
+      width: 30%;
+      margin-left: 35%;
+  }
+
+  #div-quote {
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.title-dash {
+  font-size: 22px;
+}
   }
 
 .first-div{
-    height: 400px;
+    height: 340px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -189,25 +246,24 @@
 
   iframe {
     padding: 30px 0px 30px 30px;
-    width: 400px;
-    height: 200px;
+    margin-bottom: 200px;
+    width: 600px;
+    height: 400px;
     
   }
 
   #widget-container {
-    display: flex; 
-    width: 50%;
-    height: 300px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color:rgba(255, 255, 255, 0.884);
-    padding: 20px;
-    margin-top: 0px;
-    border-radius: 20px;
-    margin-bottom: 50px;
-    margin-right: 10px;
-    margin-left: 30px;
+      display: flex;
+      width: 60%;
+      height: 300px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 20px;
+      margin: 20px;
+    
+    
   }
 
   .spotify-text {
@@ -215,13 +271,14 @@
   }
 
   .third-div {
-    display:flex;
+    display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
-    width:90%;
+    width: 1500px;
   }
 
   .spotify-widget {
       width: 400px;
+      height: 350px;
   }

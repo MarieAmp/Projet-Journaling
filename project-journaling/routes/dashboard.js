@@ -6,6 +6,7 @@ const axios = require("axios");
 const answerModel = require("../models/Answers");
 const QuestionModel = require("../models/Question");
 const hbs=require("hbs")
+require("./../middlewares/exposeLoginStatus")
 
 function getQuote() {
   return axios.get(
@@ -14,7 +15,7 @@ function getQuote() {
 }
 
 router.get("/", (req, res, next) => {
-  res.render("dashboard");
+  res.render("dashboard", req.session.currentUser);
 });
 
 router.get("/quote", (req, res, next) => {
