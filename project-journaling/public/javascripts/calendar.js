@@ -276,10 +276,10 @@ const displayPastQ = document.getElementById("pastQ");
       function pastAnswers() {
         var target = event.target.getAttribute("question.id");
         console.log(target);
-        function clean(){
-          displayPastA.innerHTML=""
+        function clean() {
+          displayPastA.innerHTML = "";
         }
-        clean()
+        clean();
         axios
           .get(`calendar/past-answers/${target}`)
           .then((res) => {
