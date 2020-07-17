@@ -81,6 +81,7 @@ var deleteQuestion = (questionId) => {
 };
 
 var createQuestion = () => {
+  clear();
   var questionText = document.getElementById("question_text").value;
   const select = document.querySelector("select[name='question_theme']");
   const value = select.value;
@@ -218,7 +219,7 @@ var displayAllQuestions = () => {
               .then((dbRes) => {
                 console.log(dbRes);
                 displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
-                setTimeout(displayAllQuestions, 5000);
+                setTimeout(displayAllQuestions, 2500);
               })
               .catch((err) => {
                 console.log(err);
@@ -284,7 +285,7 @@ var displayKeyword = () => {
               .then((dbRes) => {
                 console.log(dbRes);
                 displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
-                setTimeout(displayKeyword, 5000);
+                setTimeout(displayKeyword, 2500);
               })
               .catch((err) => {
                 console.log(err);
@@ -300,6 +301,7 @@ var displayKeyword = () => {
 };
 
 var createQuestionForm = () => {
+  clear();
   displayResults.innerHTML = `<h3> Create a new question </h3>
   
   <label class="create_label" for="question_text">Question</label>
