@@ -219,7 +219,7 @@ var displayAllQuestions = () => {
               .then((dbRes) => {
                 console.log(dbRes);
                 displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
-                setTimeout(displayAllQuestions, 5000);
+                setTimeout(displayAllQuestions, 2500);
               })
               .catch((err) => {
                 console.log(err);
@@ -285,7 +285,7 @@ var displayKeyword = () => {
               .then((dbRes) => {
                 console.log(dbRes);
                 displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
-                setTimeout(displayKeyword, 5000);
+                setTimeout(displayKeyword, 2500);
               })
               .catch((err) => {
                 console.log(err);
