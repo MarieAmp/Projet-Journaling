@@ -12,7 +12,6 @@ router.get("/", (req, res, next) => {
 
 router.get("/about", (req, res, next) => {
   res.render("about", `<script type="module" src="/javascripts/script.js"></script>`)
-
 })
 
 
