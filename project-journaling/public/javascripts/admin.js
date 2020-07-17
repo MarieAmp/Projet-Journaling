@@ -69,9 +69,12 @@ var deleteQuestion = () => {
 
 
 var createQuestion = () => {
-  var questionText = document.getElementById("question_text").value
-var questionTheme = document.querySelector('input[name="theme"]:checked')
-  axios.post("admin/question/new", { question : `${questionText}`, theme : `${questionTheme}`})
+  var questionText = document.getElementById("question_text").value;
+const select = document.querySelector("select[name='question_theme']");
+const value = select.value;
+const questionTheme = select.querySelector(`option[value='${value}']`);
+console.log(`question : ${questionText}, theme : ${questionTheme.value}`);
+  axios.post("admin/new/question", { question : `${questionText}`, theme : `${questionTheme.value}`})
   .then((dbRes) => {
     var newQuestion = dbRes.data;
     displayResults.innerHTML = `New question created <br> <h3> Question # <span class="span_question_id" question_id="${newQuestion._id}"> ${newQuestion._id} </span></h3>
@@ -263,12 +266,12 @@ var createQuestionForm = () => {
   <label class="create_label" for="question_text">Question</label>
   <input class ="input_question" type="text" name="question" id="question_text">
   <label class="create_label" for="question_theme">Theme</label>
-  <select>
-  <option name="theme" value="relationships" >relationships</option>
-  <option name="theme" value="personality" >personality</option>
-  <option name="theme" value="lifestyle" >lifestyle</option>
-  <option name="theme" value="work" >work</option>
-  <option name="theme" value="deep" >deep</option>
+  <select name="question_theme" id="question_theme">
+  <option  value="relationships" >relationships</option>
+  <option value="personality" >personality</option>
+  <option value="lifestyle" >lifestyle</option>
+  <option value="work" >work</option>
+  <option value="deep" >deep</option>
   </select>
   <button id="btn_newQuestion">create new question</button>
   </form>`

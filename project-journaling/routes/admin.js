@@ -134,7 +134,7 @@ catch (err) {
 });
 
 
-router.get("/question/new", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+router.post("/new/question", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
 console.log('in back to create new question with ', req.body);
 try {
   var newQuestion = await QuestionModel.create(req.body);
