@@ -7,7 +7,7 @@ const users = [
   {
     name: "John",
     lastName: "Doe",
-    birthday: 05/08/1995,
+    birthday: Date,
     email: "jdo@mail.co",
     password : "String",
     plan: "free",
@@ -16,7 +16,7 @@ const users = [
   {
     name: "Jane",
     lastName: "Red",
-    birthday: 05/08/1995,
+    birthday: Date,
     email: "jred@mail.co",
     password : "Gnirts",
     plan: "premium",
@@ -25,7 +25,7 @@ const users = [
   {
     name: "Dave",
     lastName: "Lauper",
-    birthday: 05/08/1970,
+    birthday: Date,
     email: "dvpr@pjt.co",
     password : "h4ck",
     plan: "free",

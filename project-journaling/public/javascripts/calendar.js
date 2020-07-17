@@ -1,7 +1,6 @@
-
-
-const calBtn = document.getElementById("see-cal");
-
+const calBtn = document.getElementById("btn-calendar");
+const displayPastA = document.getElementById("pastA");
+const displayPastQ = document.getElementById("pastQ");
 // calBtn.onclick = getData;
 
 !(function () {
@@ -13,11 +12,11 @@ const calBtn = document.getElementById("see-cal");
         console.log(dbRes);
         let data = dbRes.data;
         console.log(data);
-        var calendar = new Calendar("#calendar", data)
+        var calendar = new Calendar("#calendar", data);
       })
       .catch((err) => console.log(err));
   }
-  calBtn.onclick = getData;
+  window.addEventListener("load", getData);
 
   function Calendar(selector, events) {
     this.el = document.querySelector(selector);
@@ -43,7 +42,7 @@ const calBtn = document.getElementById("see-cal");
     //Draw Month
     this.drawMonth();
 
-    //   this.drawLegend();
+   
   };
 
   Calendar.prototype.drawHeader = function () {
@@ -77,10 +76,7 @@ const calBtn = document.getElementById("see-cal");
 
   Calendar.prototype.drawMonth = function () {
     var self = this;
-    //   RANDOMISE LA DATE DES EVENT POUR DEMO
-    //   this.events.forEach(function(ev) {
-    //    ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
-    //   });
+   
 
     if (this.month) {
       this.oldMonth = this.month;
@@ -270,8 +266,27 @@ const calBtn = document.getElementById("see-cal");
 
     events.forEach(function (ev) {
       var div = createElement("div", "event");
-      var square = createElement("div", "event-category " + "white");
-      var span = createElement("span", "", ev.id_question.question); //changer eventName par question
+      var square = createElement("div", "white");
+      var span = createElement("span", ev.id_question.id_question, ev.id_question.question);
+      span.setAttribute("question.id",`${ev.id_question._id}`)
+
+      span.onclick = pastAnswers;
+
+      function pastAnswers() {
+        
+        var target=event.target.getAttribute("question.id")
+        console.log(target);
+        axios
+          .get(`calendar/past-answers/${target}`)
+          .then((res) => {
+            console.log(res);
+            displayPastQ.innerHTML = res.data[0].id_question.question;
+            res.data.forEach((rep)=>{
+            displayPastA.innerHTML+=rep.response
+            })
+          })
+          .catch((err)=>console.log(err));
+      }
 
       div.appendChild(square);
       div.appendChild(span);
@@ -280,7 +295,7 @@ const calBtn = document.getElementById("see-cal");
 
     if (!events.length) {
       var div = createElement("div", "event empty");
-      var span = createElement("span", "", "No Events");
+      var span = createElement("span", "", "No Entry");
 
       div.appendChild(span);
       wrapper.appendChild(div);
@@ -334,19 +349,3 @@ const calBtn = document.getElementById("see-cal");
     return ele;
   }
 })();
-//   fin fonction 1
-
-// !(function () {
-//   var data = [
-//     { question: "Lunch Meeting w/ Mark", date: "2020-07-08" },
-//     { question: "Interview - Jr. Web Developer", date: "2020-07-08" },
-//     { question: "Demo New App to the Board", date: "2020-07-13" },
-//     { question: "Dinner w/ Marketing", date: "2020-07-19" },
-//   ];
-
-//   // function addDate(ev) {
-
-//   // }
-
-//   var calendar = new Calendar("#calendar", data);
-// })();

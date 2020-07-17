@@ -2,17 +2,17 @@
 <h1 class="title-dash">My profile</h1>
 
    <div class="container_item"><label for="name" class="label">Name</label>
-        <p class="input_sign">{{this.name}}</p> </div>
+        <p class="input_sign">{{currentUser.name}}</p> </div>
 
       <div class="container_item"><label for="lastName" class="label">Lastname</label>
-         <p class="input_sign">{{this.lastname}}</p> </div>
+         <p class="input_sign">{{currentUser.lastName}}</p> </div>
 
       <div class="container_item"><label for="email" class="label">Email</label>
-       <p class="input_sign">{{this.email}}</p> </div>
+       <p class="input_sign">{{currentUser.email}}</p> </div>
 
 
       <div class="container_item"><label for="bday" class="label">Birthday</label>
-         <p class="input_sign">{{format-date this.birthday}}</p> </div>
+         <p class="input_sign">{{format-date currentUser.birthday}}</p> </div>
 
       <div class="container_item">
         <a href="/profile/edit"><button class="btn">Edit</button></a></div>

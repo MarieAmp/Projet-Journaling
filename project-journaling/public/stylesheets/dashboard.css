@@ -78,6 +78,7 @@
     margin: 0px;
     font-size: 30px;
     font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 
 }
 
@@ -126,7 +127,6 @@
   justify-content: center;
   align-items: flex-start;
   width: 1500px;
-  background-color: white;
   height: 420px;
   margin-top: 130px;
 }
@@ -184,6 +184,7 @@
 
 .title-dash {
   font-size: 22px;
+  font-family: 'Poppins', sans-serif;
 }
   }
 
@@ -215,6 +216,7 @@
     letter-spacing: .10em; 
     display:flex;
     flex-wrap:wrap;
+    font-family: 'Poppins', sans-serif;
   }
 
   .text-dash {
@@ -227,7 +229,7 @@
   }
 
   #btn-calendar {
-    margin: 30px 30px 0px 30px;
+    margin-left: 30px;
   }
 
   #yoga-container {
