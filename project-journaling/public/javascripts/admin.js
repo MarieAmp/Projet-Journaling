@@ -81,6 +81,7 @@ var deleteQuestion = (questionId) => {
 };
 
 var createQuestion = () => {
+  clear();
   var questionText = document.getElementById("question_text").value;
   const select = document.querySelector("select[name='question_theme']");
   const value = select.value;
@@ -300,6 +301,7 @@ var displayKeyword = () => {
 };
 
 var createQuestionForm = () => {
+  clear();
   displayResults.innerHTML = `<h3> Create a new question </h3>
   
   <label class="create_label" for="question_text">Question</label>
