@@ -7,11 +7,11 @@ const mongoose = require("mongoose");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index");
+  res.render("index", {script : `<script type="module" src="/javascripts/script.js"></script>`});
 });
 
 router.get("/about", (req, res, next) => {
-  res.render("about")
+  res.render("about", `<script type="module" src="/javascripts/script.js"></script>`)
 
 })
 
