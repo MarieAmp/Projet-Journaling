@@ -8,17 +8,24 @@
 
 #cal-container{
    /* border: black solid; */
-  margin-top: 200px;
+  margin-top: 9vh;
   display:flex;
 align-items: flex-start;
 justify-content: space-around;
 }
 
+#quest-title{
+  padding-top:6vh ;
+}
+
+/* .each-day{
+
+} */
 #widget-cal{
   display: flex;
   background:white;
   /* border: green solid; */
-  padding:60px;
+  padding:5.4vh;
   border-radius: 20%;
 }
 
@@ -26,11 +33,11 @@ justify-content: space-around;
   display: flex;
   align-items: center;
   flex-direction: column;
-  width:900px;
-  padding: 40px;
+  width:81vh;
+  padding: 3.6vh;
   background: white;
   border-radius: 20%;
-  height:700px;
+  height:63.4vh;
 }
 
 #pasta{
@@ -40,24 +47,23 @@ text-align: justify;
 
 #calendar {
     
-  font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight",
-    "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 100;
   color: rgba(255, 255, 255, 1);
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  width: 600px;
+  width: 54vh;
   margin: 0 auto;
-  height: 570px;
+  height: 53vh;
   overflow: hidden;
   
  
 }
 
 .cal-header {
-  height: 80px;
-  width: 600px;
+  height: 7.2vh;
+  width: 55vh;
   background: linear-gradient(90deg, rgba(104,134,197,1) 0%, rgba(243,153,193,1) 50%, rgba(255,235,153,1) 100%);
   text-align: center;
   position: relative;
@@ -69,10 +75,10 @@ text-align: justify;
   margin: 0;
   padding-top: 1.5vh;
   padding-bottom: auto;
-  font-size: 30px;
-  line-height: 50px;
+  font-size: 2.74vh;
+  line-height: 4.6vh;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 0.1vh;
 }
 
 .left,
@@ -82,20 +88,20 @@ text-align: justify;
   height: 0px;
   border-style: solid;
   top: 50%;
-  margin-top: -7.5px;
+  margin-top: -0.7vh;
   cursor: pointer;
 }
 
 .left {
-  border-width: 7.5px 10px 7.5px 0;
+  border-width: 0.7vh 0.9vh 0.7vh 0;
   border-color: transparent white transparent transparent;
   left: 20px;
 }
 
 .right {
-  border-width: 7.5px 0 7.5px 10px;
+  border-width: 0.7vh 0 0.7vh 0.9vh;
   border-color: transparent transparent transparent white;
-  right: 20px;
+  right: 1.8vh;
 }
 
 .month {
@@ -138,13 +144,13 @@ text-align: justify;
 
 .week {
   background: white;
-  :
+
 }
 
 .day {
   display: inline-block;
-  width: 85px;
-  padding: 10px;
+  width: 7.7vh;
+  padding: 0.9vh;
   text-align: center;
   vertical-align: top;
   cursor: pointer;
@@ -164,24 +170,24 @@ text-align: justify;
 }
 
 .day-name {
-  font-size: 9px;
+  font-size: 0.81vh;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 0.45vh;
   color: white;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.06vh;
 }
 
 .day-number {
-  font-size: 24px;
-  letter-spacing: 1.5px;
+  font-size: 2.18vh;
+  letter-spacing: 0.14;
 }
 
 .day .day-events {
   list-style: none;
-  margin-top: 3px;
+  margin-top: 0.27vh;
   text-align: center;
-  height: 12px;
-  line-height: 6px;
+  height: 1.09vh;
+  line-height: 0.54;
   overflow: hidden;
 }
 
@@ -190,21 +196,21 @@ text-align: justify;
   display: inline-block;
   padding: 0;
   margin: 0;
-  width: 5px;
-  height: 5px;
-  line-height: 5px;
-  margin: 0 1px;
+  width: 0.45vh;
+  height: 0.45vh;
+  line-height: 0.45vh;
+  margin: 0 0.09vh;
 }
 
 
 
 .details {
   position: relative;
-  width: 600px;
-  height: 75px;
+  width: 54.5vh;
+  height: 6.8vh;
   background-color: rgba(104,134,197, 0.6);
-  margin-top: 5px;
-  border-radius: 4px;
+  margin-top: 0.45vh;
+  border-radius: 0.36vh;
 }
 
 .details.in {
@@ -223,18 +229,18 @@ text-align: justify;
   position: absolute;
   top: -5px;
   left: 50%;
-  margin-left: -2px;
+  margin-left: -0.18px;
   width: 0px;
   height: 0px;
   border-style: solid;
-  border-width: 0 5px 5px 5px;
+  border-width: 0 0.45vh 0.45vh 0.45vh;
   border-color: transparent transparent rgba(164, 164, 164, 1) transparent;
   transition: all 0.7s ease;
 }
 
 .events {
-  height: 75px;
-  padding: 7px 0;
+  height: 6.8vh;
+  padding: 0.63vh 0;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -264,10 +270,10 @@ text-align: justify;
 }
 
 .event {
-  font-size: 16px;
-  line-height: 22px;
-  letter-spacing: 0.5px;
-  padding: 2px 16px;
+  font-size: 1.45vh;
+  line-height: 2vh;
+  letter-spacing: 0.04vh;
+  padding: 0.18vh 1.45vh;
   vertical-align: top;
 }
 
@@ -277,17 +283,17 @@ text-align: justify;
 
 .white {
   background:rgba(104,134,197,1); 
-  height: 10px;
-  width: 10px;
+  height: 0.9vh;
+  width: 0.9vh;
   display: inline-block;
-  margin: 6px 0 0;
+  margin: 0.54vh 0 0;
   vertical-align: top;
 }
 
 
 .event span {
   display: inline-block;
-  padding: 0 0 0 7px;
+  padding: 0 0 0 0.63vh;
   cursor: pointer;
 }
 
@@ -297,20 +303,20 @@ text-align: justify;
 
 .entry {
   position: relative;
-  padding: 0 0 0 25px;
-  font-size: 13px;
+  padding: 0 0 0 2.27vh;
+  font-size: 1.18vh;
   display: inline-block;
-  line-height: 30px;
+  line-height: 2.72vh;
   background: transparent;
 }
 
 .entry:after {
   position: absolute;
   content: "";
-  height: 5px;
-  width: 5px;
-  top: 12px;
-  left: 14px;
+  height: 0.45vh;
+  width: 0.45vh;
+  top: 1.09vh;
+  left: 1.27vh;
 }
 
 .entry.blue:after {
