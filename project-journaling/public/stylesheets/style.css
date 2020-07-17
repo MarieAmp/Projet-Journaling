@@ -3,11 +3,8 @@
 @import'./calendar.css'; 
 @import'./user.css'; 
 @import'./admin.css';
-<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-=======
->>>>>>> master
 
 /* HIDE RADIO */
 [type=radio] { 
