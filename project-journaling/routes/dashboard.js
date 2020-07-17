@@ -16,7 +16,7 @@ function getQuote() {
 }
 
 router.get("/", (req, res, next) => {
-  res.render("dashboard", req.session.currentUser);
+  res.render("dashboard");
 });
 
 router.get("/quote", (req, res, next) => {
