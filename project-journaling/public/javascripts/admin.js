@@ -81,7 +81,7 @@ var deleteQuestion = (questionId) => {
 };
 
 var createQuestion = () => {
-  clear();
+  //clear();
   var questionText = document.getElementById("question_text").value;
   const select = document.querySelector("select[name='question_theme']");
   const value = select.value;
@@ -90,7 +90,7 @@ var createQuestion = () => {
   axios
     .post("admin/new/question", {
       question: `${questionText}`,
-      theme: `${questionTheme.value}`,
+      theme: `${questionTheme.value}`
     })
     .then((dbRes) => {
       var newQuestion = dbRes.data;

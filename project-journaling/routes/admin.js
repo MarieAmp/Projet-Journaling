@@ -126,7 +126,7 @@ router.post(
 );
 
 router.get(
-  "/delete/question-:id",
+  "/delete/question/:id",
   protectedAdminRouteAjax,
   async (req, res, next) => {
     try {
