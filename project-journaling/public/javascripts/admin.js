@@ -9,7 +9,7 @@ const btnAllUsers = document.getElementById("btn_fetchAllUsers");
 const btnCreateQuestion = document.getElementById("btn_createQuestion");
 
 const displayResults = document.getElementById("display_results");
-var nbResultsElt = document.getElementById('nb_results')
+var nbResultsElt = document.getElementById("nb_results");
 const btnClear = document.getElementById("display_clear");
 
 // ADMIN MANAGEMENT
@@ -67,28 +67,42 @@ var deleteQuestion = () => {
     });
 };
 
+var deleteQuestion = (questionId) => {
+  axios
+    .get(`admin/delete/question/${questionId}`)
+    .then((dbRes) => {
+      console.log(dbRes);
+      displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
+    })
+    .catch((err) => {
+      console.log(err);
+      displayResults.innerHTML = `<p class="revoke final">  Could not delete question #${questionId} <br> sorry. </p>`;
+    });
+};
 
 var createQuestion = () => {
   var questionText = document.getElementById("question_text").value;
-const select = document.querySelector("select[name='question_theme']");
-const value = select.value;
-const questionTheme = select.querySelector(`option[value='${value}']`);
-console.log(`question : ${questionText}, theme : ${questionTheme.value}`);
-  axios.post("admin/new/question", { question : `${questionText}`, theme : `${questionTheme.value}`})
-  .then((dbRes) => {
-    var newQuestion = dbRes.data;
-    displayResults.innerHTML = `New question created <br> <h3> Question # <span class="span_question_id" question_id="${newQuestion._id}"> ${newQuestion._id} </span></h3>
+  const select = document.querySelector("select[name='question_theme']");
+  const value = select.value;
+  const questionTheme = select.querySelector(`option[value='${value}']`);
+  console.log(`question : ${questionText}, theme : ${questionTheme.value}`);
+  axios
+    .post("admin/new/question", {
+      question: `${questionText}`,
+      theme: `${questionTheme.value}`,
+    })
+    .then((dbRes) => {
+      var newQuestion = dbRes.data;
+      displayResults.innerHTML = `New question created <br> <h3> Question # <span class="span_question_id" question_id="${newQuestion._id}"> ${newQuestion._id} </span></h3>
     <aside class="theme">  theme : ${newQuestion.theme} </aside>
     <p class="questions_text"> ${newQuestion.question} </p>
-    `
-  })
-  .catch((err) => {
-    console.error(err);
-    displayResults.innerHTML = `Could not create new question <br> sorry.`;
-  })
-
+    `;
+    })
+    .catch((err) => {
+      console.error(err);
+      displayResults.innerHTML = `Could not create new question <br> sorry.`;
+    });
 };
-
 
 //CLEARS RESULTS
 var clear = () => {
@@ -96,9 +110,7 @@ var clear = () => {
   nbResultsElt.innerText = "";
 };
 
-
-
-//DISPLAY USERS 
+//DISPLAY USERS
 var displayUserbyId = () => {
   clear();
   const userId = document.getElementById("user_id").value;
@@ -149,7 +161,7 @@ var displayUserbyEmail = () => {
     })
     .catch((err) => {
       console.log(err);
-      displayResults.innerHTML = `<p>  Could not delete retrieve user with <br> email : ${userEmail} <br> sorry. </p>`;
+      displayResults.innerHTML = `<p>  Could not retrieve user with <br> email : ${userEmail} <br> sorry. </p>`;
     });
 };
 
@@ -182,10 +194,6 @@ var displayAllUsers = () => {
     });
 };
 
-
-
-
-
 //DISPLAY QUESTIONS
 var displayAllQuestions = () => {
   clear();
@@ -202,7 +210,22 @@ var displayAllQuestions = () => {
       });
       displayResults.innerHTML += ``;
       var btnsRemove = document.querySelectorAll(".question_delete");
-      btnsRemove.forEach((btn) => (btn.onclick = displayAllQuestions));
+      btnsRemove.forEach((btn) => (btn.onclick = () => {
+
+            var questionId = btn.getAttribute("question_id");
+            axios
+              .get(`admin/delete/question/${questionId}`)
+              .then((dbRes) => {
+                console.log(dbRes);
+                displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
+                setTimeout(displayAllQuestions, 5000);
+              })
+              .catch((err) => {
+                console.log(err);
+                displayResults.innerHTML = `<p class="revoke final">  Could not delete question #${questionId} <br> sorry. </p>`;
+              });
+          })
+      );
     })
     .catch((err) => {
       console.log(err);
@@ -246,13 +269,29 @@ var displayKeyword = () => {
       nbResultsElt.innerText = `${questions.length}`;
       displayResults.innerHTML = `<br>`;
       questions.forEach((question) => {
-        displayResults.innerHTML += ` <h3> Question # <span class="span_question_id" question_id="${question._id}"> ${question._id} </span></h3>
+        displayResults.innerHTML += ` <div question_id="${question._id}"> <h3> Question # <span class="span_question_id" question_id="${question._id}"> ${question._id} </span></h3>
       <aside class="theme">  theme : ${question.theme} </aside>
       <p class="questions_text"> ${question.question} </p>
-      <button class="delete">Delete question</button> <div class="blank"></div>`;
-        var btnDelete = document.querySelector(".delete");
-        btnDelete.onclick = deleteQuestion;
+      <button class="delete">Delete question</button> </div> <div class="blank"></div>`;
       });
+      var btnsDelete = document.querySelectorAll(".delete");
+      btnsDelete.forEach(
+        (btn) =>
+          (btn.onclick = () => {
+            var questionId = btn.parentElement.getAttribute("question_id");
+            axios
+              .get(`admin/delete/question/${questionId}`)
+              .then((dbRes) => {
+                console.log(dbRes);
+                displayResults.innerHTML = `<p class="revoke final">  Question ${questionId} deleted </p>`;
+                setTimeout(displayKeyword, 5000);
+              })
+              .catch((err) => {
+                console.log(err);
+                displayResults.innerHTML = `<p class="revoke final">  Could not delete question #${questionId} <br> sorry. </p>`;
+              });
+          })
+      );
     })
     .catch((err) => {
       console.log(err);
@@ -274,15 +313,13 @@ var createQuestionForm = () => {
   <option value="deep" >deep</option>
   </select>
   <button id="btn_newQuestion">create new question</button>
-  </form>`
+  </form>`;
 
-  
-  var btn_newQuestion = document.getElementById("btn_newQuestion")
-  btn_newQuestion.onclick = createQuestion
-}
+  var btn_newQuestion = document.getElementById("btn_newQuestion");
+  btn_newQuestion.onclick = createQuestion;
+};
 
 //
-
 
 // EVT LISTENERS
 btnClear.onclick = clear;
@@ -293,5 +330,3 @@ btnQuestionbyId.onclick = displayOneQuestion;
 btnQuestionbyKeyword.onclick = displayKeyword;
 btnAllUsers.onclick = displayAllUsers;
 btnCreateQuestion.onclick = createQuestionForm;
-
-
