@@ -115,9 +115,11 @@ var clear = () => {
 var displayUserbyId = () => {
   clear();
   const userId = document.getElementById("user_id").value;
+  console.log(userId)
   axios
     .get(`admin/user-${userId}`)
     .then((jsonUser) => {
+
       console.log(jsonUser.data);
       var user = jsonUser.data;
       var birthday = moment(user.birthday).format("MM/DD/YYYY");
