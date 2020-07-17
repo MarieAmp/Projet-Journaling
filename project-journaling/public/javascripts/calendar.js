@@ -282,7 +282,7 @@ const displayPastQ = document.getElementById("pastQ");
             console.log(res);
             displayPastQ.innerHTML = res.data[0].id_question.question;
             res.data.forEach((rep) => {
-              var momDate = moment(rep.date).format("MM/DD/YYYY");
+              var momDate = moment(rep.date).format("DD/MM/YYYY");
               displayPastA.innerHTML = `
             <div class='each-ans'>
             <h3 class='each-date'>${momDate}</h3>
