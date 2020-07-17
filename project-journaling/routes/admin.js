@@ -8,7 +8,7 @@ const protectAdminRoute = require("./../middlewares/protectAdminRoute");
 
 // URLS ARE PREFIXED WITH  *  /admin *
 router.get("/", (req, res, next) => {
-  res.render("admin");
+  res.render("admin", {script : `<script type="module" src="/javascripts/admin.js"></script>`});
 });
 
 // Display, Make and Revoke admin
