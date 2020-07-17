@@ -292,6 +292,13 @@ input {
   height: 20px;
 }
 
+.link{
+  text-decoration: none;
+  font-style: 17px;
+  font-weight: 500;
+  padding-top: 10px;
+ text-align: center;
+}
 
   /* .btn::after {
     display: none;

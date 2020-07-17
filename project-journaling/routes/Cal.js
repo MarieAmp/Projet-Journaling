@@ -17,8 +17,20 @@ router.get("/show", (req, res, next) => {
     .find()
     .populate("id_question")
     .then((dbRes) => {
-      console.log(dbRes);
+      // console.log(dbRes);
       res.json(dbRes);
+    })
+    .catch(next);
+});
+
+router.get("/past-answers/:id", (req, res, next) => {
+ 
+  answerModel
+    .find({id_question:req.params.id})
+    .populate("id_question")
+    .then((dbres) => {
+      console.log(dbres);
+      res.json(dbres);
     })
     .catch(next);
 });
