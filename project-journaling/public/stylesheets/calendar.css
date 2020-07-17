@@ -8,7 +8,7 @@
 
 #cal-container{
    /* border: black solid; */
-  margin-top: 200px;
+  margin-top: 14vh;
   display:flex;
 align-items: flex-start;
 justify-content: space-around;
@@ -26,11 +26,11 @@ justify-content: space-around;
   display: flex;
   align-items: center;
   flex-direction: column;
-  width:900px;
-  padding: 40px;
+  width:81vh;
+  padding: 3.6vh;
   background: white;
   border-radius: 20%;
-  height:700px;
+  height:63.4vh;
 }
 
 #pasta{
@@ -47,9 +47,9 @@ text-align: justify;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  width: 600px;
+  width: 54vh;
   margin: 0 auto;
-  height: 570px;
+  height: 51vh;
   overflow: hidden;
   
  
