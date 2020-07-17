@@ -3,6 +3,7 @@
 @import'./calendar.css'; 
 @import'./user.css'; 
 @import'./admin.css';
+@import'./about.css';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
@@ -55,6 +56,8 @@ body {
   margin: 0px;
   font-family: 'Raleway', sans-serif;
   background-image: url("/images/fond3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -206,9 +209,30 @@ input {
   #nav-main {
     display : none !important;
   }
+
+  #nav-mobile {
+    visibility: visible;
+
+  }
   #header-main {
     display : none !important;
   }
+  .welcome-text-div {
+    width:800px;
+  }
+  .title {
+    font-size: 30px;
+    padding-left: 10px;
+  }
+  .question {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  .hello {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+
 }
 
 @media (min-width: 650px) {
@@ -261,10 +285,11 @@ input {
 
 #nav-mobile {
   position: absolute;
+  visibility: hidden;
   top: 0px;
-  right: -20%;
+  right: 0;
   bottom: 0;
-  width: 20%;
+  width: 30%;
   z-index: 10;
   display: flex;
   flex-direction: column;

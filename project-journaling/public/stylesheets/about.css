@@ -1,0 +1,32 @@
+.team-section {
+  display: flex; 
+  align-items:center;
+  justify-content:center;
+  margin-top: 100px;
+  background-color: white;
+}
+
+.about-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px 10px 30px;
+}
+
+.name {
+  font-family: 'Poppins', sans-serif;
+}
+
+.img-team {
+  width: 150px;
+  height: 150px;
+  border-radius: 50px;
+}
+
+@media (max-width: 650px) {
+  /* hide the nav when the screen size is <= 650px */
+  .team-section {
+    flex-direction: column;
+  }
+}
