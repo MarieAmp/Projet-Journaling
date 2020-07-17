@@ -6,14 +6,21 @@
       <div class="manage-admin">
         <label for="user_id"> Retrive user by id</label>
         <input class="input_admin" type="text" name="user_id" id="user_id" value="5f0c84a38f22a7050a8961de">
-        <button class="btn_admin" type="submit" id="btn_fetchUserById">Fetch</button>
+        <button class="btn_admin" type="submit" id="btn_fetchUserById">fetch</button>
       </div>
 
       <div class="manage-admin">
         <label for="user_mail"> Retrive user by email</label>
         <input class="input_admin" type="text" name="user_email" id="user_email" value="dvpr@pjt.co">
-        <button class="btn_admin" type="submit" id="btn_fetchUserByEmail">Fetch</button>
+        <button class="btn_admin" type="submit" id="btn_fetchUserByEmail">fetch</button>
       </div>
+
+<div class="blank"></div>
+      <div class="question-admin">
+        <label for="questions_all"> Retrive all users </label>
+        <button class="btn_all" type="submit" id="btn_fetchAllUsers">see all users </button>
+      </div>
+
     </div>
 
 
@@ -22,25 +29,27 @@
       <h2>Manage Questions</h2>
 
       <div class="question-admin">
+        <label for="question_id"> Retrive question <br> by id</label>
+        <input class="input_admin" type="text" name="question_id" id="question_id" value="5f0def51deb4e94506b3390a">
+        <button class="btn_admin" type="submit" id="btn_fetchQuestionById">fetch</button>
+      </div>
+
+      <div class="question-admin">
+        <label for="question_keyword">Retrive question <br> by keyword</label>
+        <input class="input_admin" type="text" name="question_keyword" id="question_keyword" value="delete">
+        <button class="btn_admin" type="submit" id="btn_fetchQuestionByKeyword">fetch</button>
+      </div>
+
+<div class="blank"></div>
+      <div class="question-admin">
         <label for="questions_all"> Retrive all questions </label>
-        <button type="submit" id="btn_fetchAllQuestions">Fetch</button>
+        <button class="btn_all" type="submit" id="btn_fetchAllQuestions">see all questions </button>
       </div>
 
       <div class="question-admin">
-        <label for="question_id"> Retrive question by id</label>
-        <input class="input_admin" type="text" name="question_id" id="question_id" value="5f0def51deb4e94506b3390b">
-        <button class="btn_admin" type="submit" id="btn_fetchQuestionById">Fetch</button>
+        <label for="questions_all"> Create question </label>
+        <button class="btn_all" type="submit" id="btn_createQuestion">new question </button>
       </div>
-
-      <div class="question-admin">
-        <label for="question_keyword">Retrive question by keyword</label>
-        <input class="input_admin" type="text" name="question_keyword" id="question_keyword" value="what">
-        <button class="btn_admin" type="submit" id="btn_fetchQuestionByKeyword">Fetch</button>
-      </div>
-
-
-
-      <div class="manage-questions" id="display_questions"></div>
 
     </div>
   </div>
@@ -49,7 +58,7 @@
 <div id="container_display">
 
   <div id="container_results">
-    <h2>Results</h2>
+    <h2><span class="results" id="nb_results"></span> Results</h2>
     <button id="display_clear">Clear</button>
   </div>
   <div id="display_results">

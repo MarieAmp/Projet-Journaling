@@ -74,7 +74,23 @@ router.get(
   }
 );
 
-// create, update and delete questions
+router.get(
+  "/users/all",
+  protectPrivateRoute,
+  protectAdminRoute,
+  async (req, res, next) => {
+    try {
+      var users = await UserModel.find();
+      res.json(users);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+);
+
+
+
+// read, create and delete questions
 
 router.get(
   "/questions/all",
@@ -104,20 +120,45 @@ router.get(
   }
 );
 
+
+router.get("/question/keyword/:keyword", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+console.log('arrived in backend to fetch questions by keyword');
+try {
+  var questionList = await QuestionModel.find({ question: { $regex: `${req.params.keyword}` } });
+  console.log('found questions with keyword', req.params.keyword);
+  res.json(questionList)
+}
+catch (err) {
+  next(err);
+}
+});
+
+
+router.post("/new/question", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+console.log('in back to create new question with ', req.body);
+try {
+  var newQuestion = await QuestionModel.create(req.body);
+  res.json(newQuestion)
+}
+catch(err) {
+  res.send(console.error(err))
+}
+})
+
+
 router.get(
-  "/delete/question-:id",
+  "/delete/question/:id",
   protectPrivateRoute,
   protectAdminRoute,
   async (req, res, next) => {
     try {
       await QuestionModel.findByIdAndDelete(req.params.id);
-      res.json(console.log(`question ${req.params.id} deleted`));
+      res.send(`question ${req.params.id} deleted`);
     } catch (err) {
       res.send(err);
     }
   }
 );
 
-/* db.stores.find( { $question: { $regex: "\"coffee shop\"" } } )*/
 
 module.exports = router;
