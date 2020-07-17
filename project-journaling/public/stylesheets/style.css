@@ -2,6 +2,7 @@
 @import'./dashboard.css';
 @import'./calendar.css';  
 @import'./user.css'; 
+@import'./admin.css';
 
 [type=radio] { 
   position: absolute;

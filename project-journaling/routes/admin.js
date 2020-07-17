@@ -8,7 +8,7 @@ const protectAdminRoute = require("./../middlewares/protectAdminRoute");
 
 // URLS ARE PREFIXED WITH  *  /admin *
 router.get("/", (req, res, next) => {
-  res.render("admin");
+  res.render("admin", {script : `<script type="module" src="/javascripts/admin.js"></script>`});
 });
 
 // Display, Make and Revoke admin
@@ -74,7 +74,23 @@ router.get(
   }
 );
 
-// create, update and delete questions
+router.get(
+  "/users/all",
+  protectPrivateRoute,
+  protectAdminRoute,
+  async (req, res, next) => {
+    try {
+      var users = await UserModel.find();
+      res.json(users);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+);
+
+
+
+// read, create and delete questions
 
 router.get(
   "/questions/all",
@@ -118,6 +134,18 @@ catch (err) {
 });
 
 
+router.post("/new/question", protectPrivateRoute, protectAdminRoute, async (req, res, next) => {
+console.log('in back to create new question with ', req.body);
+try {
+  var newQuestion = await QuestionModel.create(req.body);
+  res.json(newQuestion)
+}
+catch(err) {
+  res.send(console.error(err))
+}
+})
+
+
 router.get(
   "/delete/question/:id",
   protectPrivateRoute,
@@ -132,6 +160,5 @@ router.get(
   }
 );
 
-/* db.stores.find( { $question: { $regex: "\"coffee shop\"" } } )*/
 
 module.exports = router;

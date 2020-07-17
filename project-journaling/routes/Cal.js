@@ -9,7 +9,7 @@ const hbs = require("hbs");
 const { db } = require("../models/Answers");
 
 router.get("/", (req, res, next) => {
-  res.render("calendar");
+  res.render("calendar", {script : `<script type="module" src="/javascripts/calendar.js"></script>`});
 });
 
 router.get("/show", (req, res, next) => {

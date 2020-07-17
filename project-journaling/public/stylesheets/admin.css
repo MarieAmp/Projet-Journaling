@@ -10,27 +10,31 @@
 }
 
 #container_display {
-  
   margin-left: 5vw;
   font-size: 0.8em;
   scrollbar-color: #f199c1;
 }
 
-#manage-admin, #question-admin {
-  margin: 2px 4px 2px 4px;
+.manage-admin,
+.question-admin {
+  height: 5vh;
+  margin: 2px 4px 2px 4px !important;
 }
 
 .input_admin {
-  width: 40%;
+  width: 47%;
   height: 20px;
   position: absolute;
-  left: 40%;
+  left: 37%;
+  border: transparent solid 1px;
+  border-radius: 15px;
+  padding-left: 6px;
+  box-sizing: border-box;
 }
 
 .btn_admin {
   position: absolute;
   left: 85%;
-  
 }
 
 .question_delete {
@@ -96,8 +100,7 @@ ul {
   width: 50%;
 }
 
-
-.final{
+.final {
   width: 70%;
   cursor: default;
 }
@@ -110,7 +113,6 @@ ul {
 #container_admin {
   position: relative;
 }
-
 
 #display_results {
   position: relative;
@@ -125,7 +127,7 @@ ul {
   left: 30%;
 }
 
-#admin_status{
+#admin_status {
   font-weight: bold;
 }
 
@@ -139,17 +141,54 @@ ul {
   font-size: 1.1rem;
 }
 
-#blank {
-height: 2vh;
-background: transparent;
+.blank {
+  height: 2vh;
+  background: transparent;
 }
 
 .delete {
   background: transparent;
   color: crimson;
-  border: thin 1px ;
+  border: thin 0.4px;
   border-radius: 20px;
   position: relative;
-  left: 70%;
+  left: 35%;
 }
 
+.results {
+  color: deeppink;
+}
+
+.btn_admin {
+  width: 6vw;
+  background: whitesmoke;
+  color: cornflowerblue;
+  border: lightblue solid 0.2px;
+  border-radius: 20px;
+  position: absolute;
+  left: 85%;
+}
+
+.btn_all {
+  background: whitesmoke;
+  color: cornflowerblue;
+  border: lightblue solid 0.4px;
+  border-radius: 20px;
+  margin: auto;
+}
+
+#btn_fetchAllUsers {
+  position: absolute;
+  left: 55%;
+}
+
+
+#btn_fetchAllQuestions {
+  position: absolute;
+  left: 55%;
+}
+
+.newQuestion {
+  display: flex;
+  flex-flow: column wrap;
+}
