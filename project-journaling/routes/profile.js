@@ -6,17 +6,20 @@ const mongoose = require("mongoose")
 require("./../middlewares/exposeLoginStatus")
 
 router.get("/", (req, res, next) => {
-  res.render("profile", req.session.currentUser)
-  console.log(req.session.currentUser)
+  res.render("profile")
+
 });
 
 router.get("/edit", (req, res, next) => {
-  res.render("profile-edit", req.session.currentUser)
+  res.render("profile-edit")
 });
 
 router.post("/edit/:id", (req, res, next) => {
-  UserModel.findByIdAndUpdate(req.params.id, req.body)
-    .then((dbRes) => res.redirect("/profile"), console.log(req.body))
+  UserModel.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    .then((dbRes) =>{
+      req.session.currentUser = dbRes;
+      res.redirect("/profile"), console.log(req.body)
+    })
     .catch(next);
 });
 
