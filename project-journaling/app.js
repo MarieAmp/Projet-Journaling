@@ -13,7 +13,8 @@ const logger = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const dev_mode = true; // a changer pour faire les vérifs
+const dev_mode = false; // a changer pour faire les vérifs
+
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
@@ -21,6 +22,8 @@ const debug = require("debug")(
 );
 
 const app = express();
+
+
 
 //Session config
 app.use(
@@ -48,7 +51,7 @@ if (dev_mode === true) {
   app.use(require("./middlewares/devmode")); // triggers dev mode during dev phase
   app.use(require("./middlewares/debugSessionInfos")); // displays session debug
 }
-
+app.use(require("./middlewares/exposeLoginStatus"));
 // Express View engine setup
 
 app.use(
@@ -94,7 +97,7 @@ app.use('/profile', profile);
 const calend = require('./routes/Cal')
 app.use('/calendar', calend);
 
-app.use(require("./middlewares/exposeLoginStatus"));
+
 
 
 module.exports = app;

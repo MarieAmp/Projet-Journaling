@@ -12,19 +12,27 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script type="module" src="/javascripts/dash.js"></script>
   <script type="module" src="/javascripts/script.js"></script>
-<script type="module" src="/javascripts/calendar.js"></script>
-<script type="module" src="/javascripts/listDetails.js"></script>
+  <script type="module" src="/javascripts/calendar.js"></script>
+  <script type="module" src="/javascripts/listDetails.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" type="module"></script>
   <script type="module" src="/javascripts/admin.js"></script>
 
 </head>
 
 <body>
-  {{>navMain}}
 
-        {{#if isAdmin}}
-        {{> navAdmin}}
-        {{/if}}
+  {{#if isAdmin}}
+  {{> navAdmin}}
+  {{/if}}
+
+  {{#if isLoggedIn}}
+  {{> navUser}}
+
+
+  {{else}}
+
+  {{>navMain}}
+  {{/if}}
 
   {{{body}}}
 

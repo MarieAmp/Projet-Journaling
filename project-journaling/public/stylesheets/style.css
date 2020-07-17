@@ -1,8 +1,12 @@
 @import './sign.css';
 @import'./dashboard.css';
-@import'./calendar.css';  
+@import'./calendar.css'; 
 @import'./user.css'; 
+@import'./admin.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
+/* HIDE RADIO */
 [type=radio] { 
   position: absolute;
   opacity: 0;
@@ -10,15 +14,16 @@
   height: 0;
 }
 
-
+/* IMAGE STYLES */
 [type=radio] + img {
   height: 100px;
   width: 100px;
   cursor: pointer;
 }
 
+/* CHECKED STYLES */
 [type=radio]:checked + img {
-  outline: 2px solid #f00;
+  outline: none;
 }
 
 .mood-radio {
@@ -44,13 +49,12 @@
 }
 
 
+
 body {
   padding: 0px;
   margin: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
-  background-image: url("/images/fond2.png");
-  background-position: auto;
-  background-size: initial;
+  font-family: 'Raleway', sans-serif;
+  background-image: url("/images/fond3.png");
 }
 
 
@@ -84,6 +88,7 @@ body {
   border-radius: 20px;
   border-style: none;
   overflow: hidden;
+  z-index: 10;
 }
 
 input {
@@ -115,11 +120,13 @@ input {
   margin-left: 50px;
   padding: 0;
   margin-top: 0px;
+  font-family: 'Poppins', sans-serif;
 
 }
 
 .title {
   font-size: 50px;
+  font-family: 'Poppins', sans-serif;
   padding: 0px 0px 0px 200px;
   overflow: hidden; 
   white-space: nowrap; 
@@ -130,6 +137,7 @@ input {
 }
 
 .hello {
+  font-family: 'Poppins', sans-serif;
   font-size: 30px;
   padding: 0px 0px 30px 200px;
   overflow: hidden; 
@@ -143,7 +151,7 @@ input {
 
 .yello {
   font-size: 50px;
-  color: #D1CD62
+  color: #eee95c
 
 }
 
@@ -232,6 +240,7 @@ input {
 #header-main{
   display:flex;
   flex-direction: row;
+  z-index: 10;
 }
 
 #nav-main a {
@@ -247,21 +256,21 @@ input {
  text-decoration: none;
  cursor: pointer;
  padding: 10px;
+ z-index: 10;
 }
 
 #nav-mobile {
   position: absolute;
   top: 0px;
-  right: -100%;
+  right: -20%;
   bottom: 0;
-  width: 50%;
+  width: 20%;
   z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   transition: left 5s linear;
-  background-color: #A8A7C7;
-  ;
+  background-color: #6886c5;
   border-top: 1px solid whitesmoke;
 }
 
@@ -278,7 +287,7 @@ input {
 
 #btn-signup {
   margin: 60px 50px 0px 0px;
-  z-index: 10;
+  z-index: 20;
 }
 
 #btn-signup-mobile{
@@ -292,7 +301,7 @@ input {
 }
 
 
-  /* .btn::after {
+ /*  .btn::after {
     display: none;
     content: "";
     position: absolute;
