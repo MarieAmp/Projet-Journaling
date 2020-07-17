@@ -276,6 +276,10 @@ const displayPastQ = document.getElementById("pastQ");
       function pastAnswers() {
         var target = event.target.getAttribute("question.id");
         console.log(target);
+        function clean(){
+          displayPastA.innerHTML=""
+        }
+        clean()
         axios
           .get(`calendar/past-answers/${target}`)
           .then((res) => {
@@ -283,7 +287,7 @@ const displayPastQ = document.getElementById("pastQ");
             displayPastQ.innerHTML = res.data[0].id_question.question;
             res.data.forEach((rep) => {
               var momDate = moment(rep.date).format("DD/MM/YYYY");
-              displayPastA.innerHTML = `
+              displayPastA.innerHTML += `
             <div class='each-ans'>
             <h3 class='each-date'>${momDate}</h3>
             <p class='each-a'>${rep.response}</p><br>`;
