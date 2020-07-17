@@ -41,8 +41,6 @@ const displayPastQ = document.getElementById("pastQ");
 
     //Draw Month
     this.drawMonth();
-
-   
   };
 
   Calendar.prototype.drawHeader = function () {
@@ -76,7 +74,6 @@ const displayPastQ = document.getElementById("pastQ");
 
   Calendar.prototype.drawMonth = function () {
     var self = this;
-   
 
     if (this.month) {
       this.oldMonth = this.month;
@@ -267,25 +264,32 @@ const displayPastQ = document.getElementById("pastQ");
     events.forEach(function (ev) {
       var div = createElement("div", "event");
       var square = createElement("div", "white");
-      var span = createElement("span", ev.id_question.id_question, ev.id_question.question);
-      span.setAttribute("question.id",`${ev.id_question._id}`)
+      var span = createElement(
+        "span",
+        ev.id_question.id_question,
+        ev.id_question.question
+      );
+      span.setAttribute("question.id", `${ev.id_question._id}`);
 
       span.onclick = pastAnswers;
 
       function pastAnswers() {
-        
-        var target=event.target.getAttribute("question.id")
+        var target = event.target.getAttribute("question.id");
         console.log(target);
         axios
           .get(`calendar/past-answers/${target}`)
           .then((res) => {
             console.log(res);
             displayPastQ.innerHTML = res.data[0].id_question.question;
-            res.data.forEach((rep)=>{
-            displayPastA.innerHTML+=rep.response
-            })
+            res.data.forEach((rep) => {
+              var momDate = moment(rep.date).format("MM/DD/YYYY");
+              displayPastA.innerHTML = `
+            <div class='each-ans'>
+            <h3 class='each-date'>${momDate}</h3>
+            <p class='each-a'>${rep.response}</p><br>`;
+            });
           })
-          .catch((err)=>console.log(err));
+          .catch((err) => console.log(err));
       }
 
       div.appendChild(square);
