@@ -17,6 +17,7 @@ router.get("/show", (req, res, next) => {
     .find()
     .populate("id_question")
     .then((dbRes) => {
+      console.log(req.session.currentUser);
       // console.log(dbRes);
       res.json(dbRes);
     })
@@ -29,7 +30,7 @@ router.get("/past-answers/:id", (req, res, next) => {
     .find({id_question:req.params.id})
     .populate("id_question")
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.json(dbres);
     })
     .catch(next);
