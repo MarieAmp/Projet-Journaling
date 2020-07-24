@@ -262,19 +262,21 @@ const displayPastQ = document.getElementById("pastQ");
     );
 
     events.forEach(function (ev) {
+      // console.log(ev)
       var div = createElement("div", "event");
       var square = createElement("div", "white");
       var span = createElement(
         "span",
-        ev.id_question.id_question,
+        "",
         ev.id_question.question
       );
-      span.setAttribute("question.id", `${ev.id_question._id}`);
-
+      span.setAttribute("question.id", `${ev.id_question._id}`,);
+      span.setAttribute("user.id",`${ev.id_user}`);
       span.onclick = pastAnswers;
 
       function pastAnswers() {
         var target = event.target.getAttribute("question.id");
+        var target = event.target.getAttribute("user.id");
         console.log(target);
         function clean() {
           displayPastA.innerHTML = "";
